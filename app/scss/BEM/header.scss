@@ -42,10 +42,15 @@ header {
     font-weight: 600;
     
     display: flex;
-    &:hover{
+    &:hover, 
+    &:focus{
         cursor: pointer;
         transition: .15s;
         background-color: darken($color: #fe5f1e, $amount: 10%);
+    }
+    &:active{
+        transition: .15s;
+        background-color: darken($color: #fe5f1e, $amount: 15%);
     }
     &__link{
         margin: 0 auto;
