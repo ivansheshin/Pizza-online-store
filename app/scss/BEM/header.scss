@@ -34,12 +34,26 @@ header {
 
 .order{
     @include btnadd-and-orderinfo(transparent, var(--orange-color), 140px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
     color: #FFF;
 
     font-weight: 600;
+    
+    display: flex;
+    &:hover{
+        cursor: pointer;
+        transition: .15s;
+        background-color: darken($color: #fe5f1e, $amount: 10%);
+    }
+    &__link{
+        margin: 0 auto;
+        text-decoration: none;
+        color: #FFF;
+        display: flex;
+        align-items: center;
+    }
 
     &__price::after{
         content: '\20BD';
