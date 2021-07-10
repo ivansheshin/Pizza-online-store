@@ -51,6 +51,8 @@ header {
     &:active{
         transition: .15s;
         background-color: darken($color: #fe5f1e, $amount: 15%);
+        position: relative;
+        top: 2px;
     }
     &__link{
         margin: 0 auto;
