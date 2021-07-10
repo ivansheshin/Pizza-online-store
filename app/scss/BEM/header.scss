@@ -45,11 +45,11 @@ header {
     &:hover, 
     &:focus{
         cursor: pointer;
-        transition: .15s;
+        transition: .3s;
         background-color: darken($color: #fe5f1e, $amount: 10%);
     }
     &:active{
-        transition: .15s;
+        transition: .3s;
         background-color: darken($color: #fe5f1e, $amount: 15%);
         position: relative;
         top: 2px;
