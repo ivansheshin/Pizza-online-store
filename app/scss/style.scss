@@ -1,2 +1,23 @@
-body{ display: flex;
+@import './BEM/*.scss';
+@import './Design/*.scss';
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@400;600;800;900&display=swap');
+
+
+body{
+    font-family: 'Encode Sans SC', sans-serif;
+    background-color: var(--bg-color);
+    // padding: 40px 50px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    color: var(--main-color);
+    
+}
+.container{
+    background-color: #fff;
+    margin: 50px auto;
+
+    border-radius: 10px;
+    width: calc(100vw - 100px);
+    max-width: 1400px;
 }

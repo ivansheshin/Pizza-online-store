@@ -1,0 +1,6 @@
+@mixin btnadd-and-orderinfo ($bordercolor, $bgcolor, $width) {
+    border-radius: 30px;
+    border: 1px solid $bordercolor;
+    background-color: $bgcolor;
+    width: $width;
+}

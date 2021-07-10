@@ -1,0 +1,62 @@
+@import './Design/mixins.scss';
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 var(--container-indent);
+    padding: 40px 0;
+}
+
+.header {
+    border-bottom: 1px solid var(--header-border-color);
+}
+
+.logo-name-block {
+    display: flex;
+
+    &__text>h1 {
+        font-size: 24px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    &__text>p {
+        font-size: 15px;
+        color: var(--gray-color);
+        margin: 0;
+        text-transform: lowercase;
+    }
+
+    &__logo {
+        margin-right: 10px;
+    }
+}
+
+.order{
+    @include btnadd-and-orderinfo(transparent, var(--orange-color), 140px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+
+    font-weight: 600;
+
+    &__price::after{
+        content: '\20BD';
+        margin-left: 5px;
+    }
+    &__quantity{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__quantity::before{
+        content: '';
+        background-color: #FFFFFF40;
+        width: 1px;
+        height: 25px;
+        margin-left: 10px;
+    }
+}
+

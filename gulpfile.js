@@ -47,7 +47,7 @@ function styles() {
             grid: true
 
     }))
-        // .pipe(dest('app/css'))
+        .pipe(dest('app/css'))
         .pipe(browserSync.stream())
 }
 
@@ -55,7 +55,7 @@ function scripts(){
     return src(['app/js/main.js'])
     .pipe(concat('main.min.js'))
     .pipe (uglify())
-    // .pipe(dest('app/js'))
+    .pipe(dest('app/js'))
     .pipe(browserSync.stream())
 }
 
