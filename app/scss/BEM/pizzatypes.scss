@@ -1,15 +1,17 @@
-.pizza-types-and-sort{
+.pizza-types-and-sort {
     display: flex;
     align-items: center;
     margin: 40px;
     gap: 50px;
 }
-.types{
+
+.types {
     display: flex;
     gap: 15px;
     font-weight: 700;
     margin: 0;
-    &__item{
+
+    &__item {
         padding: 13px 30px;
         display: inline-block;
         cursor: pointer;
@@ -19,18 +21,21 @@
 
         height: min-content;
     }
-    &__item:hover{
+
+    &__item:hover {
         background-color: darken($color: #f9f9f9, $amount: 2%);
     }
 }
 
-.sort{
+.sort {
     position: relative;
-    &__title{
+
+    &__title {
         font-weight: 700;
         cursor: pointer;
     }
-    &__choosen{
+
+    &__choosen {
         text-transform: lowercase;
         text-decoration: underline dashed 1px;
         border: none;
@@ -40,7 +45,8 @@
         font-size: inherit;
         cursor: pointer;
     }
-    &__list{
+
+    &__list {
         position: absolute;
         border-radius: 10px;
         background-color: #FFF;
@@ -52,18 +58,22 @@
         display: none;
         text-transform: lowercase;
     }
-    &__item{
+
+    &__item {
         padding: 12px 20px;
         cursor: pointer;
     }
-    &__item:hover{
+
+    &__item:hover {
         transition: .3s;
         background-color: rgba(254, 95, 30, 0.05);
     }
-    &__svg{
+
+    &__svg {
         cursor: pointer;
     }
-    &__svg:active{
+
+    &__svg:active {
         transition: .5s;
         transform: rotate(180deg);
     }
@@ -71,12 +81,13 @@
 }
 
 
-.active{
+.active {
     // класс для джс(стиль при клике на одну из категорий)
     background-color: var(--categories-color-hover);
     color: #FFF;
 }
-.open{
+
+.open {
     // класс для джс (список сортировки)
     display: block;
 }

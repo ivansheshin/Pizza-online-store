@@ -31,12 +31,13 @@ header {
     &__logo {
         margin-right: 10px;
     }
-    &__link{
+
+    &__link {
         color: #000;
     }
 }
 
-.order{
+.order {
     @include btnadd-and-orderinfo(transparent, var(--orange-color), 140px);
     // display: flex;
     // align-items: center;
@@ -44,38 +45,42 @@ header {
     color: #FFF;
 
     font-weight: 600;
-    
+
     display: flex;
-    &:hover, 
-    &:focus{
+
+    &:hover,
+    &:focus {
         cursor: pointer;
         transition: .3s;
         background-color: darken($color: #fe5f1e, $amount: 10%);
     }
-    &:active{
+
+    &:active {
         transition: .3s;
         background-color: darken($color: #fe5f1e, $amount: 15%);
         position: relative;
         top: 2px;
     }
-    &__link{
+
+    &__link {
         margin: 0 auto;
         color: #FFF;
         display: flex;
         align-items: center;
     }
 
-    &__price::after{
+    &__price::after {
         content: '\20BD';
         margin-left: 5px;
     }
-    &__quantity{
+
+    &__quantity {
         display: flex;
         align-items: center;
         gap: 10px;
     }
 
-    &__quantity::before{
+    &__quantity::before {
         content: '';
         background-color: #FFFFFF40;
         width: 1px;
@@ -83,4 +88,3 @@ header {
         margin-left: 10px;
     }
 }
-

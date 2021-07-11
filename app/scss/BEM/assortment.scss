@@ -1,0 +1,16 @@
+.assortment{
+    margin: 60px;
+    &>h2{
+        font-weight: 800;
+        margin-bottom: 35px;
+        font-size: 28px;
+        line-height: 30px;
+    }
+    &__list{
+        width: min-content;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 100px;
+    }
+}
