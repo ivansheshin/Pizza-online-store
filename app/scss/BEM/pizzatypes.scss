@@ -1,0 +1,42 @@
+.pizza-types-and-sort{
+    display: flex;
+    margin: 40px;
+    gap: 50px;
+}
+.types{
+    display: flex;
+    gap: 15px;
+    font-weight: 700;
+    margin: 0;
+    &__item{
+        padding: 13px 30px;
+        display: inline-block;
+        cursor: pointer;
+        transition: .3s;
+        border-radius: 30px;
+        background-color: #f9f9f9;
+
+        height: min-content;
+    }
+    &__item:hover{
+        background-color: darken($color: #f9f9f9, $amount: 2%);
+    }
+}
+
+// .sort{
+//     font-weight: 700;
+//     &__choosen{
+//         text-transform: lowercase;
+//     }
+// }
+
+
+.active{
+    // класс для джс(стиль при клике на одну из категорий)
+    background-color: var(--categories-color-hover);
+    color: #FFF;
+}
+.open{
+    // класс для джс (список сортировки)
+    display: block;
+}
