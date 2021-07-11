@@ -1,5 +1,6 @@
 .pizza-types-and-sort{
     display: flex;
+    align-items: center;
     margin: 40px;
     gap: 50px;
 }
@@ -23,12 +24,37 @@
     }
 }
 
-// .sort{
-//     font-weight: 700;
-//     &__choosen{
-//         text-transform: lowercase;
-//     }
-// }
+.sort{
+    position: relative;
+    &__title{
+        font-weight: 700;
+    }
+    &__choosen{
+        text-transform: lowercase;
+        text-decoration: underline dashed 1px;
+        border: none;
+        background-color: #FFF;
+        color: var(--orange-color);
+        font-family: inherit;
+        font-size: inherit;
+        cursor: pointer;
+        
+    }
+    &__list{
+        position: absolute;
+        border-radius: 10px;
+        background-color: #FFF;
+        padding: 10px 0;
+        min-width: 160px;
+
+        right: 0;
+        top: 15px;
+        display: none;
+    }
+    &__item{
+        padding: 12px 20px;
+    }
+}
 
 
 .active{
