@@ -7,14 +7,13 @@
         line-height: 30px;
     }
     &__list{
-        width: min-content;
-        margin: 0 auto;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 100px;
     }
     &__item{
         width: 280px;
+        margin: 0 auto;
     }
     &__pizza-name{
         font-size: 20px;
@@ -54,6 +53,7 @@
     font-weight: 700;
     padding: 6px;
     text-align: center;
+    border-radius: 10px;
     &__type {
         display: flex;
         flex-wrap: wrap
