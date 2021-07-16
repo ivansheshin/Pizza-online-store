@@ -38,7 +38,7 @@ header {
 }
 
 .order {
-    @include btnadd-and-orderinfo(transparent, var(--orange-color), 140px);
+    @include button-categories-style(transparent, var(--orange-color), 140px);
     // display: flex;
     // align-items: center;
     // justify-content: center;

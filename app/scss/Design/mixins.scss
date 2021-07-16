@@ -1,8 +1,15 @@
-@mixin btnadd-and-orderinfo ($bordercolor, $bgcolor, $width) {
+@mixin button-categories-style ($bordercolor, $bgcolor, $width) {
     border-radius: 30px;
     border: 1px solid $bordercolor;
     background-color: $bgcolor;
     width: $width;
-    // миксин для информации по заказку, кнопки "добавить" и категорий
+    // миксин для информации по заказку, кнопки "добавить"
 }
 
+@mixin pizza-info {
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 5px;
+    flex: 1 1;
+    // Миксин для блока с информацией для пицц(размеры, тип)
+}

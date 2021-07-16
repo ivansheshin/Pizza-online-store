@@ -10,7 +10,68 @@
         width: min-content;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 100px;
+    }
+    &__item{
+        width: 280px;
+    }
+    &__pizza-name{
+        font-size: 20px;
+        text-align: center;
+    }
+    &__price-to-add{
+        font-weight: 600;
+        font-size: 22px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__price::after{
+        content: '\20BD';
+        margin-left: 5px;
+    }
+    &__btn{
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--orange-color);
+        padding: 10px 20px;
+        @include button-categories-style(var(--orange-color), #fff, 130px)
+    }
+    &__btn:hover{
+        color: #fff;
+        background-color: var(--orange-color);
+        cursor: pointer;
+        transition: .5s;
+    }
+    
+}
+
+.pizza-information{
+    background-color: var(--pizza-info-color);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px;
+    text-align: center;
+    &__type {
+        display: flex;
+    }
+    &__type > span {
+        @include pizza-info;
+    }
+    &__size{
+        display: flex;
+    }
+    &__size > span{
+        @include pizza-info;
+    }
+    &__type > span:hover{
+        cursor: pointer;
+        transition: .5s;
+    }
+    &__size > span:hover{
+        cursor: pointer;
+        transition: .5s;
     }
 }
