@@ -3,8 +3,9 @@
     align-items: center;
     margin: 40px;
     gap: 50px;
-    @media (max-width: 825px) {
+    @media (max-width: 840px) {
         flex-direction: column;
+        
     }
 }
 
@@ -13,7 +14,11 @@
     gap: 15px;
     font-weight: 700;
     margin: 0;
+    margin-left: 40px;
+
+    padding: 0;
     flex-wrap: wrap;
+    justify-content: center;
     &__item {
         padding: 13px 30px;
         display: inline-block;
