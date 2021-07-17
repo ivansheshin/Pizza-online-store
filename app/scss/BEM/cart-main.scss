@@ -1,0 +1,31 @@
+.main-empty-cart {
+    margin: 0 auto;
+    width: 560px;
+    text-align: center;
+
+    &__title {
+        font-size: 32px;
+    }
+
+    &__text {
+        font-size: 18px;
+        color: #777;
+        line-height: 145%;
+        letter-spacing: .01em;
+    }
+    &__image{
+        width: 300;
+        height: auto;
+        margin: 45px 130px 60px;
+    }
+
+    &__link {
+        display: block;
+        color: #fff;
+        @include button-categories-style(#000, 230px);
+        padding: 12px 0 14px;
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0 auto;
+    }
+}

@@ -1,6 +1,5 @@
-@mixin button-categories-style ($bordercolor, $bgcolor, $width) {
+@mixin button-categories-style ($bgcolor, $width) {
     border-radius: 30px;
-    border: 1px solid $bordercolor;
     background-color: $bgcolor;
     width: $width;
     // миксин для информации по заказку, кнопки "добавить"

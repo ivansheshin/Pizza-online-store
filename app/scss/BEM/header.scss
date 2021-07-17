@@ -44,10 +44,8 @@ header {
 }
 
 .order {
-    @include button-categories-style(transparent, var(--orange-color), 140px);
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
+    @include button-categories-style(var(--orange-color), 140px);
+
     color: #FFF;
 
     font-weight: 600;

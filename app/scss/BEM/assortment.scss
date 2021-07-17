@@ -36,7 +36,8 @@
         font-size: 16px;
         color: var(--orange-color);
         padding: 10px 20px;
-        @include button-categories-style(var(--orange-color), #fff, 130px)
+        @include button-categories-style(#fff, 130px);
+        border: 1px solid var(--orange-color);
     }
     &__btn:hover{
         color: #fff;
