@@ -30,8 +30,9 @@
         height: min-content;
     }
 
-    &__item:hover {
+    &__item_hover:hover {
         background-color: darken($color: #f9f9f9, $amount: 2%);
+        transition: .3s;
     }
 }
 @media (max-width: 1280px){
@@ -75,7 +76,7 @@
         cursor: pointer;
     }
 
-    &__item:hover {
+    &__item:hover{
         transition: .3s;
         background-color: rgba(254, 95, 30, 0.05);
     }
@@ -92,7 +93,7 @@
 }
 
 
-.active {
+.clicked{
     // класс для джс(стиль при клике на одну из категорий)
     background-color: var(--categories-color-hover);
     color: #FFF;
