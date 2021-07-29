@@ -123,12 +123,12 @@
         <main>
             <section class="pizza-types-and-sort">
                 <ul class="types">
-                    <li class="types__item types__item_hover" tabindex="3">Все</li>
-                    <li class="types__item types__item_hover" tabindex="4">Мясные</li>
-                    <li class="types__item types__item_hover" tabindex="5">Вегетарианская</li>
-                    <li class="types__item types__item_hover" tabindex="6">Гриль</li>
-                    <li class="types__item types__item_hover" tabindex="7">Острые</li>
-                    <li class="types__item types__item_hover" tabindex="8">Закрытые</li>
+                    <li class="types__item types__item_hover" tabindex="3" id='all'>Все</li>
+                    <li class="types__item types__item_hover" tabindex="4" id='meat'>Мясные</li>
+                    <li class="types__item types__item_hover" tabindex="5" id='vegetarian'>Вегетарианская</li>
+                    <li class="types__item types__item_hover" tabindex="6" id='grill'>Гриль</li>
+                    <li class="types__item types__item_hover" tabindex="7" id='spicy'>Острые</li>
+                    <li class="types__item types__item_hover" tabindex="8" id='closed'>Закрытые</li>
                 </ul>
                 <section class="sort">
                     <svg class="sort__svg" width="10" height="6" viewBox="0 0 10 6" fill="none"
@@ -150,7 +150,7 @@
             <section class="assortment">
                 <h2>Все пиццы</h2>
                 <div class="assortment__list">
-                    <div class="assortment__item">
+                    <div class="assortment__item meat" >
                         <img src="img/pepe-fresh-pepper.jpeg" width="260" alt="Пепперони фреш с перцем">
                         <h2 class="assortment__pizza-name">Пепперони Фреш с перцем</h2>
                         <div class="pizza-information">
@@ -169,7 +169,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item vegetarian">
                         <img src="img/cheeze.jpg" width="260" alt="Сырная пицца">
                         <h2 class="assortment__pizza-name">Сырная пицца</h2>
                         <div class="pizza-information">
@@ -186,7 +186,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item meat">
                         <img src="img/chicken-bbq.jpg" width="260" alt="Цыпленок барбекю">
                         <h2 class="assortment__pizza-name">Цыпленок барбекю</h2>
                         <div class="pizza-information">
@@ -203,7 +203,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item grill">
                         <img src="img/sweet-sour-chicken.jpg" width="260" alt="Кисло-сладкий цыпленок">
                         <h2 class="assortment__pizza-name">Кисло-сладкий цыпленок</h2>
                         <div class="pizza-information">
@@ -222,7 +222,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item grill">
                         <img src="img/cheesburger.jpg" width="260" alt="Чизбургер пицца">
                         <h2 class="assortment__pizza-name">Чизбургер пицца</h2>
                         <div class="pizza-information">
@@ -241,7 +241,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item spicy">
                         <img src="img/crazy-pepe.jpg" width="260" alt="Крейзи пепперони">
                         <h2 class="assortment__pizza-name">Крейзи пепперони</h2>
                         <div class="pizza-information">
@@ -260,7 +260,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item meat">
                         <img src="img/pepe.jpg" width="260" alt="Пепперони">
                         <h2 class="assortment__pizza-name">Пепперони</h2>
                         <div class="pizza-information">
@@ -279,7 +279,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item vegetarian">
                         <img src="img/margarita.jpg" width="260" alt="Пицца Маргарита">
                         <h2 class="assortment__pizza-name">Маргарита</h2>
                         <div class="pizza-information">
@@ -298,7 +298,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item closed" >
                         <img src="img/4seasons.jpg" width="260" alt="Пицца 4 сезона">
                         <h2 class="assortment__pizza-name">Четыре сезона</h2>
                         <div class="pizza-information">
@@ -317,7 +317,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item closed" >
                         <img src="img/vegetables-and-mushrooms.jpg" width="260" alt="Пицца овощи и грибы">
                         <h2 class="assortment__pizza-name">Овощи и грибы</h2>
                         <div class="pizza-information">
@@ -336,7 +336,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item vegetarian">
                         <img src="img/carbonara.jpeg" width="260" alt="Пицца карбонара">
                         <h2 class="assortment__pizza-name">Карбонара</h2>
                         <div class="pizza-information">
@@ -356,7 +356,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item meat">
                         <img src="img/pesto.jpeg" width="260" alt="Пицца песто">
                         <h2 class="assortment__pizza-name">Песто</h2>
                         <div class="pizza-information">
@@ -375,7 +375,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item spicy">
                         <img src="img/ariva.jpeg" width="260" alt="Пицца арива">
                         <h2 class="assortment__pizza-name">Арива</h2>
                         <div class="pizza-information">
@@ -395,7 +395,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item meat">
                         <img src="img/hawaii.jpg" width="260" alt="Гавайская пицца">
                         <h2 class="assortment__pizza-name">Гавайская</h2>
                         <div class="pizza-information">
@@ -414,7 +414,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item spicy">
                         <img src="img/mexican.jpg" width="260" alt="Мексиканская пицца">
                         <h2 class="assortment__pizza-name">Мексиканская</h2>
                         <div class="pizza-information">
@@ -433,7 +433,7 @@
                             <button class="assortment__btn">+Добавить</button>
                         </div>
                     </div>
-                    <div class="assortment__item">
+                    <div class="assortment__item meat">
                         <img src="img/ranch-chicken.jpg" width="260" alt="Цыпленок ранчо">
                         <h2 class="assortment__pizza-name">Цыпленок ранчо</h2>
                         <div class="pizza-information">
