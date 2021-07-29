@@ -1,4 +1,3 @@
-
 const assortment = document.querySelectorAll('.assortment__item')
 // Константы для типов пицц
 const ClosedPizza = document.querySelectorAll('.closed')
@@ -20,21 +19,19 @@ const filterClosed = document.querySelector('#closed');
 let arrayFiltres = [filterAll, filterMeat, filterVegetarian]
 // Слушатели на фильтры
 
-filter.addEventListener('click', e =>{
+filter.addEventListener('click', e => {
     let filterItem = e.target.id;
 
     assortment.forEach(item => {
-        if(!item.classList.contains(filterItem) &&filterItem !== 'all'){
+        if (!item.classList.contains(filterItem) && filterItem !== 'all') {
             item.style.display = 'none'
-        } else{
+        } else {
             item.style.display = ''
         }
     })
-    
+
 
     // assortment.forEach(item=>item.style.display = 'none')
     // pizzaType.forEach(item => item.style.display = 'block')
 
 })
-
-
