@@ -1,5 +1,4 @@
 
-
 const assortment = document.querySelectorAll('.assortment__item')
 // Константы для типов пицц
 const ClosedPizza = document.querySelectorAll('.closed')
@@ -9,6 +8,7 @@ const VegetarianPizza = document.querySelectorAll('.vegetarian')
 const MeatPizza = document.querySelectorAll('.meat')
 
 // Константы для фильтра
+const filter = document.querySelector('.types')
 const filterItem = document.querySelectorAll('types__item')
 const filterAll = document.querySelector('#all');
 const filterMeat = document.querySelector('#meat');
@@ -20,23 +20,21 @@ const filterClosed = document.querySelector('#closed');
 let arrayFiltres = [filterAll, filterMeat, filterVegetarian]
 // Слушатели на фильтры
 
+filter.addEventListener('click', e =>{
+    let filterItem = e.target.id;
 
-filterAll.addEventListener('click', ()=>{
-    filterAll.classList.add('clicked')
-    assortment.forEach(item=>item.style.display = 'block')
+    assortment.forEach(item => {
+        if(!item.classList.contains(filterItem) &&filterItem !== 'all'){
+            item.style.display = 'none'
+        } else{
+            item.style.display = ''
+        }
+    })
+    
+
+    // assortment.forEach(item=>item.style.display = 'none')
+    // pizzaType.forEach(item => item.style.display = 'block')
+
 })
 
-function initListenersForFiltres(element, assortment, pizzaType ){
-    element.addEventListener('click', ()=>{
-        element.classList.add('clicked')
-        assortment.forEach(item=>item.style.display = 'none')
-        pizzaType.forEach(item => item.style.display = 'block')
-    })
-}
-
-initListenersForFiltres(filterMeat,assortment,MeatPizza)
-initListenersForFiltres(filterVegetarian,assortment,VegetarianPizza)
-initListenersForFiltres(filterGrill,assortment,GrillPizza)
-initListenersForFiltres(filterSpicy,assortment,SpicyPizza)
-initListenersForFiltres(filterClosed,assortment,ClosedPizza)
 
