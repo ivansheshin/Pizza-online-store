@@ -1,27 +1,31 @@
-const assortment = document.querySelectorAll('.assortment__item')
-// Константы для фильтра
-const filter = document.querySelector('.types')
-const filterAllItem = document.querySelectorAll('.types__item')
-// 
-// Слушатели на фильтры
-console.log(filterAllItem)
-filter.addEventListener('click', e => {
-    if (e.target.tagName !== 'LI') return
+document.addEventListener('DOMContentLoaded', () => {
+    // Навешивание стиля на фильтр "Все" при загрузке DOM
+    const filterAll = document.querySelector('#all')
+    filterAll.classList.add('clicked')
 
-    const filterId = e.target.id;
-    const filterItem = e.target
+    // Константы для фильтра и его элементов
+    const filter = document.querySelector('.types')
+    const filterAllItem = document.querySelectorAll('.types__item')
 
-    if (!filterItem.classList.contains('clicked')) {
-        filterAllItem.forEach(item => item.classList.remove('clicked'))
-        filterItem.classList.add('clicked')
-    }
+    // Логика фильтра
+    filter.addEventListener('click', e => {
+        if (e.target.tagName !== 'LI') return
 
-    assortment.forEach(item => {
-        if (!item.classList.contains(filterId) && filterId !== 'all') {
-            item.style.display = 'none'
-        } else {
-            item.style.display = ''
+        const filterId = e.target.id;
+        const filterItem = e.target
+        // Изменение анимации элементов списка у фильтра
+        if (!filterItem.classList.contains('clicked')) {
+            filterAllItem.forEach(item => item.classList.remove('clicked'))
+            filterItem.classList.add('clicked')
         }
+        // Отображение товаров в зависимости от выбранного фильтра
+        const assortment = document.querySelectorAll('.assortment__item')
+        assortment.forEach(item => {
+            if (!item.classList.contains(filterId) && filterId !== 'all') {
+                item.style.display = 'none'
+            } else {
+                item.style.display = ''
+            }
+        })
     })
-
 })
