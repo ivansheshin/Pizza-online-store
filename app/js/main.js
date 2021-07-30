@@ -35,11 +35,18 @@ function sortAssortmentAndAddPopup() {
     // Попап для сортировки
     const sortTag = document.querySelector('.sort')
     const sortList = document.querySelector('.sort__list')
+    const sortItem = document.querySelectorAll('.sort__item')
+    const sortButton = document.querySelector('.sort__choosen')
 
     sortTag.addEventListener('click', () => {
         sortList.classList.toggle('open')
-
     })
+    // Изменение текста кнопки при выборе пункта фильтра
+    sortItem.forEach(item=>item.addEventListener('click', e => {
+        sortButton.textContent = e.target.textContent
+
+    }))
+
 
 
 
