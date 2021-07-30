@@ -32,6 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 // Сортировка по популярности, названию и цене
 function sortAssortmentAndAddPopup() {
+    // Сортировка по названию
+    let arrayNames = []
+    const assortmentNames = document.querySelectorAll('.assortment__pizza-name')
+
+    assortmentNames.forEach(item => arrayNames.push(item.textContent))
+    arrayNames.sort((a, b) =>{
+        if (a > b) return 1;
+        if (a === b) return 0;
+        if (a < b) return -1;
+    })
+    
+    console.log(arrayNames)
+
     // Попап для сортировки
     const sortTag = document.querySelector('.sort')
     const sortList = document.querySelector('.sort__list')
@@ -41,8 +54,9 @@ function sortAssortmentAndAddPopup() {
     sortTag.addEventListener('click', () => {
         sortList.classList.toggle('open')
     })
+
     // Изменение текста кнопки при выборе пункта фильтра
-    sortItem.forEach(item=>item.addEventListener('click', e => {
+    sortItem.forEach(item => item.addEventListener('click', e => {
         sortButton.textContent = e.target.textContent
 
     }))
