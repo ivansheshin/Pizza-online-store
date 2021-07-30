@@ -48,14 +48,12 @@ function sortAssortmentAndAddPopup() {
     })
 console.log(arrayNames)
 
-    // assortmentNames.sort((a, b) =>{
-    //     if (a > b) return 1;
-    //     if (a === b) return 0;
-    //     if (a < b) return -1;
-    // })
-    // arrayNames.forEach(item => {
+    arrayNames.sort((a, b) =>{
+        a.name > b.name?1:-1
+    })
+    arrayNames.forEach(item => {
         
-    // })
+    })
 
 
     // Попап для сортировки
