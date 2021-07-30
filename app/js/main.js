@@ -32,21 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 // Сортировка по популярности, названию и цене
 function sortAssortmentAndAddPopup() {
-    const assortmentNames = document.querySelectorAll('.assortment__pizza-name')
 
-    // Сортировка по названию
-    let arrayNames = []
-
-    assortmentNames.forEach(item => arrayNames.push(item))
-
-    let sortedNames = arrayNames.slice().sort((a, b) => {
-        if (a.textContent > b.textContent) return 1
-        if (a.textContent < b.textContent) return -1
-    })
-
-    arrayNames.map((item, index) => {
-        item.textContent = sortedNames[index].textContent
-    })
 
     // Попап для сортировки
     const sortTag = document.querySelector('.sort')
@@ -60,7 +46,34 @@ function sortAssortmentAndAddPopup() {
 
     // Изменение текста кнопки при выборе пункта фильтра
     sortItem.forEach(item => item.addEventListener('click', e => {
+
         sortButton.textContent = e.target.textContent
+
+        const arrayTagNames = []
+        const assortmentNames = document.querySelectorAll('.assortment__pizza-name')
+        assortmentNames.forEach(item =>  arrayTagNames.push(item))
+        
+        if (e.target.textContent == 'Популярности') {
+            const popular = arrayTagNames.slice()
+            arrayTagNames.forEach((item, index) =>{
+                item.textContent = popular[index].textContent
+            })
+
+        }
+        // Сортировка по названию
+        if (e.target.textContent == 'Названию') {
+            
+
+            const sortedNames = arrayTagNames.slice().sort((a, b) => {
+                if (a.textContent > b.textContent) return 1
+                if (a.textContent < b.textContent) return -1
+            })
+
+            arrayTagNames.forEach((item, index) => {
+                item.textContent = sortedNames[index].textContent
+            })
+            console.log(arrayTagNames)
+        }
 
     }))
 
