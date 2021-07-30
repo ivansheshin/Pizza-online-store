@@ -1,3 +1,4 @@
+// Сортировка по виду пиццы
 document.addEventListener('DOMContentLoaded', () => {
     // Навешивание стиля на фильтр "Все" при загрузке DOM
     const filterAll = document.querySelector('#all')
@@ -29,3 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 })
+// Сортировка по популярности, названию и цене
+function sortAssortmentAndAddPopup() {
+    // Попап для сортировки
+    const sortTag = document.querySelector('.sort')
+    const sortList = document.querySelector('.sort__list')
+
+    sortTag.addEventListener('click', () => {
+        sortList.classList.toggle('open')
+
+    })
+
+
+
+
+}
+sortAssortmentAndAddPopup()
