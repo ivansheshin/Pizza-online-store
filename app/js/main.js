@@ -36,14 +36,27 @@ function sortAssortmentAndAddPopup() {
     let arrayNames = []
     const assortmentNames = document.querySelectorAll('.assortment__pizza-name')
 
-    assortmentNames.forEach(item => arrayNames.push(item.textContent))
-    arrayNames.sort((a, b) =>{
-        if (a > b) return 1;
-        if (a === b) return 0;
-        if (a < b) return -1;
+    assortmentNames.forEach(item => {
+      let itemObj =  {
+            tag: item,
+            name: item.textContent,
+            parBlock: item.closest('.assortment__item')
+        }
+        arrayNames.push(itemObj)
+        
+
     })
-    
-    console.log(arrayNames)
+console.log(arrayNames)
+
+    // assortmentNames.sort((a, b) =>{
+    //     if (a > b) return 1;
+    //     if (a === b) return 0;
+    //     if (a < b) return -1;
+    // })
+    // arrayNames.forEach(item => {
+        
+    // })
+
 
     // Попап для сортировки
     const sortTag = document.querySelector('.sort')
