@@ -1,8 +1,14 @@
-@import './Design/*.scss';
-@import './BEM/*.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@400;600;800;900&display=swap');
 
+@import "Design/mixins";
+@import "Design/variables";
+
+
+@import "BEM/assortment";
+@import "BEM/cart-main";
+@import "BEM/header";
+@import "BEM/pizzatypes";
 
 body{
     font-family: 'Encode Sans SC', sans-serif;

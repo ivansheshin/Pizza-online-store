@@ -1,3 +1,6 @@
+import '../scss/style.scss'
+
+
 // Сортировка по виду пиццы
 document.addEventListener('DOMContentLoaded', () => {
     // Навешивание стиля на фильтр "Все" при загрузке DOM
