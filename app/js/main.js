@@ -1,9 +1,10 @@
-import {foo} from './HTMLcreater';
+import {HTMLCreate} from './HTMLcreater';
 
 import '../scss/style.scss'
 
 // Сортировка по виду пиццы
 document.addEventListener('DOMContentLoaded', () => {
+    HTMLCreate()
     // Навешивание стиля на фильтр "Все" при загрузке DOM
     const filterAll = document.querySelector('#all')
     filterAll.classList.add('clicked')

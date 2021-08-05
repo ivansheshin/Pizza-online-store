@@ -1,6 +1,28 @@
-import {PizzaAssortment} from './PizzaAssortment'
+import {
+    PizzaAssortment
+} from './PizzaAssortment'
 
-export  function foo (){
-    alert(123)
+export function HTMLCreate() {
+    PizzaAssortment.map(item => {
+        const containerForPizza = document.querySelector('.assortment__list');
+
+        containerForPizza.insertAdjacentHTML('beforeend', `
+            <div class="assortment__item ${item.filterKey}" >
+                <img src="${item.imgAdress}" width="260" alt="${item.altImg}">
+                <h2 class="assortment__pizza-name">${item.title}</h2>
+                <div class="pizza-information">
+                    <div class="pizza-information__type">
+                        <span>${item.dough}</span>
+
+                    </div>
+                    <div class="pizza-information__size">
+                        <span>${item.sizes}.</span>
+                    </div>
+                </div>
+                <div class="assortment__price-to-add">
+                    <span class="assortment__price">от ${item.price}</span>
+                    <button class="assortment__btn">+Добавить</button>
+                </div>
+            </div>`)
+    })
 }
-qe()
