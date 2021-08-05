@@ -1,5 +1,6 @@
-import '../scss/style.scss'
+import {foo} from './HTMLcreater';
 
+import '../scss/style.scss'
 
 // Сортировка по виду пиццы
 document.addEventListener('DOMContentLoaded', () => {
@@ -49,7 +50,6 @@ function sortAssortmentAndAddPopup() {
 
     // Изменение текста кнопки при выборе пункта фильтра
     sortItem.forEach(item => item.addEventListener('click', e => {
-
         sortButton.textContent = e.target.textContent
 
         const arrayTagNames = []
@@ -79,10 +79,6 @@ function sortAssortmentAndAddPopup() {
         }
 
     }))
-
-
-
-
 
 }
 sortAssortmentAndAddPopup()
