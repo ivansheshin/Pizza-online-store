@@ -1,6 +1,5 @@
-import {HTMLCreate} from './HTMLcreater';
-
-import '../scss/style.scss'
+import {HTMLCreate} from "./HTMLcreate";
+import '../scss/style.scss';
 
 // Сортировка по виду пиццы
 document.addEventListener('DOMContentLoaded', () => {
@@ -82,4 +81,4 @@ function sortAssortmentAndAddPopup() {
     }))
 
 }
-sortAssortmentAndAddPopup()
+// sortAssortmentAndAddPopup()

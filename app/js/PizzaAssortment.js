@@ -11,7 +11,7 @@ export const PizzaAssortment = [{
     title: 'Сырная пицца',
     imgAdress: 'img/cheeze.jpg',
     altImg: 'Сырная пицца',
-    dough: 'традиционное',
+    dough: ['традиционное'],
     sizes: [26, 40],
     price: 635,
     filterKey: 'вегетарианская'
@@ -20,7 +20,7 @@ export const PizzaAssortment = [{
     title: 'Цыпленок барбекю',
     imgAdress: 'img/chicken-bbq.jpg',
     altImg: 'Цыпленок барбекю',
-    dough: 'традиционное',
+    dough: ['традиционное'],
     sizes: [26, 40],
     price: 685,
     filterKey: 'мясная'
@@ -29,7 +29,7 @@ export const PizzaAssortment = [{
     title: 'Кисло-сладкий цыпленок',
     imgAdress: 'img/sweet-sour-chicken.jpg',
     altImg: 'Кисло-сладкий цыпленок',
-    dough: 'тонкое',
+    dough: ['тонкое'],
     sizes: [26, 30, 40],
     price: 665,
     filterKey: 'гриль'
@@ -47,7 +47,7 @@ export const PizzaAssortment = [{
     title: 'Крейзи пепперони',
     imgAdress: 'img/crazy-pepe.jpg',
     altImg: 'Крейзи пепперони',
-    dough: 'традиционное',
+    dough: ['традиционное'],
     sizes: [30, 40],
     price: 900,
     filterKey: 'острая'
@@ -101,7 +101,7 @@ export const PizzaAssortment = [{
     title: 'Песто',
     imgAdress: 'img/pesto.jpeg',
     altImg: 'Пицца Песто',
-    dough: 'традиционное',
+    dough: ['традиционное'],
     sizes: [26, 30],
     price: 940,
     filterKey: 'мясная'
@@ -119,7 +119,7 @@ export const PizzaAssortment = [{
     title: 'Гавайская',
     imgAdress: 'img/hawaii.jpg',
     altImg: 'Гавайская пицца',
-    dough: 'традиционное',
+    dough: ['традиционное'],
     sizes: [26, 40],
     price: 540,
     filterKey: 'мясная'
@@ -128,7 +128,7 @@ export const PizzaAssortment = [{
     title: 'Мексиканская',
     imgAdress: 'img/mexican.jpg',
     altImg: 'Мексиканская пицца',
-    dough: 'тонкое',
+    dough: ['тонкое'],
     sizes: [26, 30],
     price: 1040,
     filterKey: 'острая'
@@ -137,7 +137,7 @@ export const PizzaAssortment = [{
     title: 'Цыпленок ранчо',
     imgAdress: 'img/pepe-fresh-pepper.jpeg',
     altImg: 'Пицца "Цыпленок ранчо"',
-    dough: 'традиционное',
+    dough: ['традиционное'],
     sizes: [26, 40],
     price: 640,
     filterKey: 'мясная'
@@ -145,22 +145,4 @@ export const PizzaAssortment = [{
 ]
 
 
-// PizzaAssortment.sort((a, b) => {
-//   if (a.title > b.title) return 1
-//   if (a.title === b.title) return 0
-//   if (a.title < b.title) return -1
-// })
 
-
-
-// class PizzaAssortmentclass {
-//     constructor(options){
-//         this.title = options.title;
-//         this.img = options.img;
-//         this.altImg = options.altImg;
-//         this.dough = options.dough;
-//         this.sizes = options.sizes;
-//         this.price = options.price;
-//         this.filterKey = options.filterKey;
-//     }
-// }
