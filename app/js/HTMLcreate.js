@@ -1,9 +1,6 @@
-import {PizzaAssortment} from './PizzaAssortment'
-
-export function HTMLCreate() {
-    PizzaAssortment.map(item => {
+export function HTMLCreate(array) {
+    array.map(item => {
         const containerForPizza = document.querySelector('.assortment__list');
-
         containerForPizza.insertAdjacentHTML('beforeend', `
             <div class="assortment__item" >
                 <img src="${item.imgAdress}" width="260" alt="${item.altImg}">

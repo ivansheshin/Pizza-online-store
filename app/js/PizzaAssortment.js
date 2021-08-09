@@ -5,7 +5,7 @@ export const PizzaAssortment = [{
     dough: ['традиционное', 'тонкое'],
     sizes: [26, 30, 40],
     price: 740,
-    filterKey: 'мясная'
+    filterKey: 'мясные'
   },
   {
     title: 'Сырная пицца',
@@ -23,7 +23,7 @@ export const PizzaAssortment = [{
     dough: ['традиционное'],
     sizes: [26, 40],
     price: 685,
-    filterKey: 'мясная'
+    filterKey: 'мясные'
   },
   {
     title: 'Кисло-сладкий цыпленок',
@@ -50,7 +50,7 @@ export const PizzaAssortment = [{
     dough: ['традиционное'],
     sizes: [30, 40],
     price: 900,
-    filterKey: 'острая'
+    filterKey: 'острые'
   },
   {
     title: 'Пепперони',
@@ -59,7 +59,7 @@ export const PizzaAssortment = [{
     dough: ['традиционное', 'тонкое'],
     sizes: [26, 30, 40],
     price: 690,
-    filterKey: 'мясная'
+    filterKey: 'мясные'
   },
   {
     title: 'Маргарита',
@@ -77,7 +77,7 @@ export const PizzaAssortment = [{
     dough: ['традиционное', 'тонкое'],
     sizes: [26, 30, 40],
     price: 740,
-    filterKey: 'закрытая'
+    filterKey: 'закрытые'
   },
   {
     title: 'Овощи и грибы',
@@ -86,7 +86,7 @@ export const PizzaAssortment = [{
     dough: ['традиционное', 'тонкое'],
     sizes: [26, 30, 40],
     price: 690,
-    filterKey: 'закрытая'
+    filterKey: 'закрытые'
   },
   {
     title: 'Карбонара',
@@ -104,7 +104,7 @@ export const PizzaAssortment = [{
     dough: ['традиционное'],
     sizes: [26, 30],
     price: 940,
-    filterKey: 'мясная'
+    filterKey: 'мясные'
   },
   {
     title: 'Арива',
@@ -113,7 +113,7 @@ export const PizzaAssortment = [{
     dough: ['традиционное', 'тонкое', 'супертонкое'],
     sizes: [26, 30, 40],
     price: 840,
-    filterKey: 'острая'
+    filterKey: 'острые'
   },
   {
     title: 'Гавайская',
@@ -122,7 +122,7 @@ export const PizzaAssortment = [{
     dough: ['традиционное'],
     sizes: [26, 40],
     price: 540,
-    filterKey: 'мясная'
+    filterKey: 'мясные'
   },
   {
     title: 'Мексиканская',
@@ -131,7 +131,7 @@ export const PizzaAssortment = [{
     dough: ['тонкое'],
     sizes: [26, 30],
     price: 1040,
-    filterKey: 'острая'
+    filterKey: 'острые'
   },
   {
     title: 'Цыпленок ранчо',
@@ -140,7 +140,7 @@ export const PizzaAssortment = [{
     dough: ['традиционное'],
     sizes: [26, 40],
     price: 640,
-    filterKey: 'мясная'
+    filterKey: 'мясные'
   },
 ]
 
