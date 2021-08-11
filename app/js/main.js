@@ -1,9 +1,5 @@
-import {
-    PizzaAssortment
-} from './PizzaAssortment'
-import {
-    HTMLCreate
-} from "./HTMLcreate";
+import {PizzaAssortment} from './PizzaAssortment'
+import {HTMLCreate} from "./HTMLcreate";
 import '../scss/style.scss';
 
 // Сортировка по виду пиццы
@@ -12,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Навешивание стиля на фильтр "Все" при загрузке DOM
     const filterAll = document.querySelector('#all')
     filterAll.classList.add('clicked')
-
     // Константы для фильтра и его элементов
     const filter = document.querySelector('.types')
     const filterAllItem = document.querySelectorAll('.types__item')
@@ -30,11 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Отображение товаров в зависимости от выбранного фильтра
         const deleteDOMElem = document.querySelectorAll('.assortment__item');
         if (filterItem.textContent === 'Все') {
+            deleteDOMElem.forEach(item => item.remove())
             HTMLCreate(PizzaAssortment)
         } else {
             deleteDOMElem.forEach(item => item.remove())
-            const filtredArray = PizzaAssortment.filter(item => item.filterKey === filterItem.textContent.toLowerCase())
-            HTMLCreate(filtredArray)
+            PizzaAssortment = PizzaAssortment.filter(item => item.filterKey === filterItem.textContent.toLowerCase())
+
+            HTMLCreate(PizzaAssortment)
         }
 
     })
@@ -44,46 +41,21 @@ function sortAssortmentAndAddPopup() {
 
 
     // Попап для сортировки
-    const sortTag = document.querySelector('.sort')
-    const sortList = document.querySelector('.sort__list')
-    const sortItem = document.querySelectorAll('.sort__item')
-    const sortButton = document.querySelector('.sort__choosen')
 
-    sortTag.addEventListener('click', () => {
-        sortList.classList.toggle('open')
-    })
 
     // Изменение текста кнопки при выборе пункта фильтра
     sortItem.forEach(item => item.addEventListener('click', e => {
-        sortButton.textContent = e.target.textContent
-
-        const arrayTagNames = []
-        const assortmentNames = document.querySelectorAll('.assortment__pizza-name')
-        assortmentNames.forEach(item => arrayTagNames.push(item))
-
-        if (e.target.textContent == 'Популярности') {
-            const popular = arrayTagNames.slice()
-            arrayTagNames.forEach((item, index) => {
-                item.textContent = popular[index].textContent
+        const filterItem = e.target;
+        sortButton.textContent = filterItem.textContent
+        if (filterItem.textContent === 'Названию') {
+            // const filteredArrayByName = PizzaAssortment;
+            let filteredArrayByName = PizzaAssortment.sort((frstElem, scndElem) => {
+                if (frstElem.title > scndElem.title) return 1;
+                if (frstElem.title === scndElem.title) return 0;
+                if (frstElem.title < scndElem.title) return -1;
             })
-
+            
         }
-        // Сортировка по названию
-        if (e.target.textContent == 'Названию') {
-
-
-            const sortedNames = arrayTagNames.slice().sort((a, b) => {
-                if (a.textContent > b.textContent) return 1
-                if (a.textContent < b.textContent) return -1
-            })
-
-            arrayTagNames.forEach((item, index) => {
-                item.textContent = sortedNames[index].textContent
-            })
-            console.log(arrayTagNames)
-        }
-
     }))
 
 }
-// sortAssortmentAndAddPopup()

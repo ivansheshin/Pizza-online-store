@@ -1,4 +1,4 @@
-export const PizzaAssortment = [{
+export let PizzaAssortment = [{
     title: 'Пепперони Фреш с перцем',
     imgAdress: 'img/pepe-fresh-pepper.jpeg',
     altImg: 'Пепперони Фреш с перцем',
