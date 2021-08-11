@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
             HTMLCreate(PizzaAssortment)
         } else {
             deleteDOMElem.forEach(item => item.remove())
-            PizzaAssortment = PizzaAssortment.filter(item => item.filterKey === filterItem.textContent.toLowerCase())
+            const filteredArray = PizzaAssortment.filter(item => item.filterKey === filterItem.textContent.toLowerCase())
 
-            HTMLCreate(PizzaAssortment)
+            HTMLCreate(filteredArray)
         }
 
     })
