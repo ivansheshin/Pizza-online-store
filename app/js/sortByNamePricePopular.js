@@ -9,14 +9,13 @@ export function sortByNamePricePopular(array) {
         const filterItem = e.target;
         sortButton.textContent = filterItem.textContent;
 
+        
         if(filterItem.id === 'name'){
-            sortByName(array)
-
+            sortArrayByName(array)
         }
         else if(filterItem.id === 'price'){
-            sortByPrice(array)
+            sortArrayByPrice(array)
         }
-
     }))
 
 }
@@ -30,11 +29,11 @@ function popupForSortList(){
   
     })
 }
-function sortByPrice(array){
+function sortArrayByPrice(array){
     array.sort((frstItem, scndItem) => frstItem.price - scndItem.price)
 }
 
-function sortByName(array){
+function sortArrayByName(array){
     array.sort((frstItem, scndItem) => {
         if(frstItem.title > scndItem.title) return 1;
         if(frstItem.title === scndItem.title) return 0;
