@@ -1,61 +1,45 @@
-import {PizzaAssortment} from './PizzaAssortment'
-import {HTMLCreate} from "./HTMLcreate";
+import {PizzaAssortment} from './PizzaAssortment';
+import {HTMLCreateGoods} from "./HTMLCreateGoods";
+import {sortByNamePricePopular} from "./sortingPizzaByNamePricePopularity";
 import '../scss/style.scss';
+
 
 // Сортировка по виду пиццы
 document.addEventListener('DOMContentLoaded', () => {
-    HTMLCreate(PizzaAssortment)
-    // Навешивание стиля на фильтр "Все" при загрузке DOM
-    const filterAll = document.querySelector('#all')
-    filterAll.classList.add('clicked')
-    // Константы для фильтра и его элементов
+    HTMLCreateGoods(PizzaAssortment)
+    
+    const btnFilterChooseAll = document.querySelector('#btn-filter-choose-all')
+    btnFilterChooseAll.classList.add('types__item_clicked');
+
+
     const filter = document.querySelector('.types')
     const filterAllItem = document.querySelectorAll('.types__item')
-
     // Логика фильтра
+    let filteredArray = [];
+
     filter.addEventListener('click', e => {
         if (e.target.tagName !== 'LI') return
 
         const filterItem = e.target
         // Изменение анимации элементов списка у фильтра
-        if (!filterItem.classList.contains('clicked')) {
-            filterAllItem.forEach(item => item.classList.remove('clicked'))
-            filterItem.classList.add('clicked')
+        if (!filterItem.classList.contains('types__item_clicked')) {
+            filterAllItem.forEach(item => item.classList.remove('types__item_clicked'))
+            filterItem.classList.add('types__item_clicked')
         }
         // Отображение товаров в зависимости от выбранного фильтра
         const deleteDOMElem = document.querySelectorAll('.assortment__item');
-        if (filterItem.textContent === 'Все') {
+
+        if (filterItem.id === 'btn-filter-choose-all') {
             deleteDOMElem.forEach(item => item.remove())
-            HTMLCreate(PizzaAssortment)
+            HTMLCreateGoods(PizzaAssortment)
+            
         } else {
             deleteDOMElem.forEach(item => item.remove())
-            const filteredArray = PizzaAssortment.filter(item => item.filterKey === filterItem.textContent.toLowerCase())
+            filteredArray = PizzaAssortment.filter(item => item.filterKey === filterItem.textContent.toLowerCase())
 
-            HTMLCreate(filteredArray)
+            HTMLCreateGoods(filteredArray)
         }
+
 
     })
 })
-// Сортировка по популярности, названию и цене
-function sortAssortmentAndAddPopup() {
-
-
-    // Попап для сортировки
-
-
-    // Изменение текста кнопки при выборе пункта фильтра
-    sortItem.forEach(item => item.addEventListener('click', e => {
-        const filterItem = e.target;
-        sortButton.textContent = filterItem.textContent
-        if (filterItem.textContent === 'Названию') {
-            // const filteredArrayByName = PizzaAssortment;
-            let filteredArrayByName = PizzaAssortment.sort((frstElem, scndElem) => {
-                if (frstElem.title > scndElem.title) return 1;
-                if (frstElem.title === scndElem.title) return 0;
-                if (frstElem.title < scndElem.title) return -1;
-            })
-            
-        }
-    }))
-
-}

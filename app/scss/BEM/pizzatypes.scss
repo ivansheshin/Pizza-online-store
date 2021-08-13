@@ -28,15 +28,15 @@
         background-color: #f9f9f9;
 
         height: min-content;
-        // &:hover{
-        //     background-color: darken($color: #f9f9f9, $amount: 2%);
-        //     transition: .3s;
-        // }
     }
 
     &__item_hover {
         background-color: darken($color: #f9f9f9, $amount: 2%);
         transition: .3s;
+    }
+    &__item_clicked {
+        background-color: var(--categories-color-hover);
+        color: #FFF;
     }
     
 }
@@ -98,11 +98,11 @@
 }
 
 
-.clicked{
-    // класс для джс(стиль при клике на одну из категорий)
-    background-color: var(--categories-color-hover);
-    color: #FFF;
-}
+// .clicked{
+//     // класс для джс(стиль при клике на одну из категорий)
+//     background-color: var(--categories-color-hover);
+//     color: #FFF;
+// }
 .open{
     // Класс для popup
     display: block;
