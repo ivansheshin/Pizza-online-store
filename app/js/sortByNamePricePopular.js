@@ -8,20 +8,14 @@ export function sortByNamePricePopular(array) {
     sortItem.forEach(item => item.addEventListener('click', e => {
         const filterItem = e.target;
         sortButton.textContent = filterItem.textContent;
-        if(filterItem.id === 'popularity'){
-            return
-        }
+
         if(filterItem.id === 'name'){
-            array.sort((frstItem, scndItem) => {
-                if(frstItem.title > scndItem.title) return 1;
-                if(frstItem.title === scndItem.title) return 0;
-                if(frstItem.title < scndItem.title) return -1;
-            })
+            sortByName(array)
+
         }
         else if(filterItem.id === 'price'){
-            array.sort((frstItem, scndItem) => frstItem.price - scndItem.price)
+            sortByPrice(array)
         }
-        console.log(array)
 
     }))
 
@@ -34,5 +28,16 @@ function popupForSortList(){
     sortBlock.addEventListener('click', () => {
         sortList.classList.toggle('open')
   
+    })
+}
+function sortByPrice(array){
+    array.sort((frstItem, scndItem) => frstItem.price - scndItem.price)
+}
+
+function sortByName(array){
+    array.sort((frstItem, scndItem) => {
+        if(frstItem.title > scndItem.title) return 1;
+        if(frstItem.title === scndItem.title) return 0;
+        if(frstItem.title < scndItem.title) return -1;
     })
 }
