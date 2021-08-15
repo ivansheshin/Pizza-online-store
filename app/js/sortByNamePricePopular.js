@@ -1,6 +1,5 @@
 import { HTMLCreateGoods } from "./HTMLCreateGoods"
 export function sortByNamePricePopular(array) {
-    popupForSortList()
 
     // Изменение текста кнопки и фильтрация по названию\цену\популярности
     const sortItem = document.querySelectorAll('.sort__item')
@@ -27,7 +26,7 @@ export function sortByNamePricePopular(array) {
 
 }
 
-function popupForSortList(){
+export function popupForSortList(){
     const sortBlock = document.querySelector('.sort');
     const sortList = document.querySelector('.sort__list');
 
