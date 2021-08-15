@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterBlockItems = document.querySelectorAll('.types__item')
     
     let filteredArray = [];
+
     filterBlock.addEventListener('click', e => {
         const filterItem = e.target
 
@@ -27,15 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const allGoods = document.querySelectorAll('.assortment__item');
 
         if (filterItem.id === 'btn-filter-choose-all') {
-            allGoods.forEach(item => item.remove())
-            HTMLCreateGoods(PizzaAssortment)
-        } else {
             
             allGoods.forEach(item => item.remove())
+            HTMLCreateGoods(PizzaAssortment)
+            sortByNamePricePopular(PizzaAssortment)
+        } else {
+
+            allGoods.forEach(item => item.remove())
             filteredArray = PizzaAssortment.filter(item => item.filterKey === filterItem.textContent.toLowerCase())
+            
             HTMLCreateGoods(filteredArray)
+            sortByNamePricePopular(filteredArray)
         }
         
     })
-    sortByNamePricePopular(PizzaAssortment)
 })

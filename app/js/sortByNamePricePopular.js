@@ -1,3 +1,4 @@
+import { HTMLCreateGoods } from "./HTMLCreateGoods"
 export function sortByNamePricePopular(array) {
     popupForSortList()
 
@@ -9,12 +10,18 @@ export function sortByNamePricePopular(array) {
         const filterItem = e.target;
         sortButton.textContent = filterItem.textContent;
 
-        
+        const allGoods = document.querySelectorAll('.assortment__item');
         if(filterItem.id === 'name'){
+            allGoods.forEach(item => item.remove())
             sortArrayByName(array)
+            
+            HTMLCreateGoods(array)
+
         }
         else if(filterItem.id === 'price'){
+            allGoods.forEach(item => item.remove())
             sortArrayByPrice(array)
+            HTMLCreateGoods(array)
         }
     }))
 
