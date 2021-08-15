@@ -43,5 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     sortByNamePricePopular(PizzaAssortment)
 
-
+    // 
+    const pizzaType = document.querySelectorAll('.pizza-information__item');
+    
+    
+    // if (!filterItem.classList.contains('types__item_clicked')) {
+    //     filterBlockItems.forEach(item => item.classList.remove('types__item_clicked'))
+    //     filterItem.classList.add('types__item_clicked')
+    // }
 })

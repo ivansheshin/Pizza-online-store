@@ -9,10 +9,9 @@
     &__list{
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 100px;
+        gap: 60px;
     }
     &__item{
-        width: 280px;
         margin: 0 auto;
     }
     &__pizza-name{
@@ -59,9 +58,13 @@
         display: flex;
         flex-wrap: wrap
     }
-    &__type > span {
+    &__item{
         @include pizza-info;
     }
+    &__item_clicked{
+        background-color: #fff;
+    }
+
     &__size{
         display: flex;
     }

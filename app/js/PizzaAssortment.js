@@ -92,7 +92,7 @@ export let PizzaAssortment = [{
     title: 'Карбонара',
     imgAdress: 'img/carbonara.jpeg',
     altImg: 'Карбонара',
-    dough: ['традиционное', 'тонкое'],
+    dough: ['традиционное', 'тонкое', 'супертонкое'],
     sizes: [26, 30, 40],
     price: 590,
     filterKey: 'вегетарианская'

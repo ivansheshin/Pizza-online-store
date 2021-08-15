@@ -9,7 +9,7 @@ export function HTMLCreateGoods(array) {
                 <div class="pizza-information">
                     <div class="pizza-information__type">
                         ${item.dough.map(item => {
-                            return `<span>${item}</span>`}).join('')}
+                            return `<span class="pizza-information__item">${item}</span>`}).join('')}
                     </div>
                     <div class="pizza-information__size">
                     ${item.sizes.map(item => { 
