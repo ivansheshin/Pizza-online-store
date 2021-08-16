@@ -1,4 +1,4 @@
-import { HTMLCreateGoods } from "./HTMLCreateGoods"
+import { renderGoodsCards } from "./HTMLCreateGoods"
 export function sortByNamePricePopular(array) {
 
     // Изменение текста кнопки и фильтрация по названию\цену\популярности
@@ -14,21 +14,22 @@ export function sortByNamePricePopular(array) {
             allGoods.forEach(item => item.remove())
             sortArrayByName(array)
             
-            HTMLCreateGoods(array)
+            renderGoodsCards(array)
 
         }
         else if(filterItem.id === 'price'){
             allGoods.forEach(item => item.remove())
             sortArrayByPrice(array)
-            HTMLCreateGoods(array)
+            renderGoodsCards(array)
         }
     }))
 
 }
 
-export function popupForSortList(){
+export function popupForSort(){
     const sortBlock = document.querySelector('.sort');
     const sortList = document.querySelector('.sort__list');
+    const sortArrow = document.querySelector('.sort__svg');
 
     sortBlock.addEventListener('click', () => {
         sortList.classList.toggle('open')

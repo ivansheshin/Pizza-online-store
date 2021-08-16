@@ -1,12 +1,12 @@
 import {PizzaAssortment} from './PizzaAssortment';
-import {HTMLCreateGoods} from "./HTMLCreateGoods";
+import {renderGoodsCards} from "./HTMLCreateGoods";
 import {sortByNamePricePopular} from "./sortByNamePricePopular";
-import { popupForSortList } from './sortByNamePricePopular';
+import { popupForSort } from './sortByNamePricePopular';
 import '../scss/style.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
-    popupForSortList();
-    HTMLCreateGoods(PizzaAssortment)
+    popupForSort();
+    renderGoodsCards(PizzaAssortment)
     const btnFilterChooseAll = document.querySelector('#btn-filter-choose-all')
     btnFilterChooseAll.classList.add('types__item_clicked');
 
@@ -30,23 +30,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (filterItem.id === 'btn-filter-choose-all') {
             allGoods.forEach(item => item.remove())
-            HTMLCreateGoods(PizzaAssortment)
+            renderGoodsCards(PizzaAssortment)
         } else {
 
             allGoods.forEach(item => item.remove())
             filteredArray = PizzaAssortment.filter(item => item.filterKey === filterItem.textContent.toLowerCase())  
-            HTMLCreateGoods(filteredArray)
+            renderGoodsCards(filteredArray)
             sortByNamePricePopular(filteredArray)
         }
         
     })
-    
     sortByNamePricePopular(PizzaAssortment)
 
     // 
     const pizzaType = document.querySelectorAll('.pizza-information__item');
     
-    
+
     // if (!filterItem.classList.contains('types__item_clicked')) {
     //     filterBlockItems.forEach(item => item.classList.remove('types__item_clicked'))
     //     filterItem.classList.add('types__item_clicked')

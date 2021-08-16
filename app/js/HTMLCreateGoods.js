@@ -1,5 +1,5 @@
 
-export function HTMLCreateGoods(array) {
+export function renderGoodsCards(array) {
     array.map(item => {
         const containerForPizza = document.querySelector('.assortment__list');
         containerForPizza.insertAdjacentHTML('beforeend', `
