@@ -1,3 +1,4 @@
+let openRequest = indexedDB.open('PizzaAssortment', 1);
 export let PizzaAssortment = [{
     title: 'Пепперони Фреш с перцем',
     imgAdress: 'img/pepe-fresh-pepper.jpeg',
