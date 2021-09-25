@@ -1,6 +1,6 @@
 import {PizzaAssortment} from './PizzaAssortment';
 import {renderGoodsCards} from "./HTMLCreateGoods";
-import {sortByNamePricePopular} from "./sortByNamePricePopular";
+import {sortPizza} from "./sortPizza";
 // import { popupForSort } from './sortByNamePricePopular';
 import '../scss/style.scss';
 
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnFilterChooseAll.classList.add('types__item_clicked');
 
 
-    sortByNamePricePopular()
+    sortPizza()
     // 
     const pizzaType = document.querySelectorAll('.pizza-information__item');
     
