@@ -55,6 +55,13 @@ module.exports = {
         hot: isProd
     },
     optimization: optimization(),
+    resolve: {
+        alias: {
+            Style: path.resolve(__dirname, 'app/scss'),
+            Script: path.resolve(__dirname, 'app/js'),
+            Data: path.resolve(__dirname, 'app/data')
+        },
+    },
     plugins: [
         new HTMLWebpackPlugin({
             template: './index.html',
