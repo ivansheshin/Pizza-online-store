@@ -1,23 +1,19 @@
-import {PizzaAssortment} from './PizzaAssortment';
-import {renderGoodsCards} from "./HTMLCreateGoods";
-import {sortPizza} from "./sortPizza";
-// import { popupForSort } from './sortByNamePricePopular';
-import '../scss/style.scss';
+import 'Style/style.scss';
+import assortment from 'Data/assortment.json';
+import { RenderGoodsCards } from 'Script/RenderGoodsCards';
+import { Filter } from 'Script/Filters';
+import { Sort } from 'Script/Sort';
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    // popupForSort();
-    renderGoodsCards(PizzaAssortment)
-    const btnFilterChooseAll = document.querySelector('#btn-filter-choose-all')
-    btnFilterChooseAll.classList.add('types__item_clicked');
+  const assortmentContainer = document.querySelector('.assortment__list');
 
+  const renderGoodsCards = new RenderGoodsCards(assortment, assortmentContainer);
+  renderGoodsCards.render();
 
-    sortPizza()
-    // 
-    const pizzaType = document.querySelectorAll('.pizza-information__item');
-    
+  const filterCategories = document.querySelectorAll('.filter-categories__item');
+  new Filter(assortmentContainer, filterCategories);
 
-    // if (!filterItem.classList.contains('types__item_clicked')) {
-    //     filterBlockItems.forEach(item => item.classList.remove('types__item_clicked'))
-    //     filterItem.classList.add('types__item_clicked')
-    // }
+  const sortContainer = document.querySelector('.sort')
+  new Sort(assortmentContainer, sortContainer);
 })

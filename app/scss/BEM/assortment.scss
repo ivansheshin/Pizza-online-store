@@ -13,6 +13,9 @@
     }
     &__item{
         margin: 0 auto;
+        &_hide{
+            display: none;
+        }
     }
     &__pizza-name{
         font-size: 20px;
@@ -44,7 +47,7 @@
         cursor: pointer;
         transition: .5s;
     }
-    
+
 }
 
 .pizza-information{
@@ -60,6 +63,7 @@
     }
     &__item{
         @include pizza-info;
+
     }
     &__item_clicked{
         background-color: #fff;

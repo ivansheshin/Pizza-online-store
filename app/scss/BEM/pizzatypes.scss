@@ -9,7 +9,7 @@
     }
 }
 
-.types {
+.filter-categories {
     display: flex;
     gap: 15px;
     font-weight: 700;
@@ -22,22 +22,25 @@
         padding: 13px 30px;
         display: inline-block;
         cursor: pointer;
-        transition: .3s;
         border-radius: 30px;
         background-color: #f9f9f9;
 
         height: min-content;
+        transition: filter 0.3s;
+
+        &:hover {
+            filter: brightness(98%);
+        }
+
+        &_active {
+            background-color: var(--categories-color-hover);
+            color: #FFF;
+            &:hover{
+                filter: brightness(200%);
+            }
+        }
     }
 
-    &__item_hover {
-        background-color: darken($color: #f9f9f9, $amount: 2%);
-        transition: .3s;
-    }
-    &__item_clicked {
-        background-color: var(--categories-color-hover);
-        color: #FFF;
-    }
-    
 }
 
 .sort {
@@ -70,6 +73,9 @@
         top: 15px;
         display: none;
         text-transform: lowercase;
+        &_open{
+            display: block;
+        }
     }
 
     &__item {
@@ -91,8 +97,5 @@
         transform: rotate(180deg);
     }
 
-}
-.open{
-    // Класс для popup
-    display: block;
+
 }
