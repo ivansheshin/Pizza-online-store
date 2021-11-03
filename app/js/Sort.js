@@ -8,13 +8,17 @@ export class Sort {
 
   init() {
     const menuItems = this.sortContainer.querySelectorAll('.sort__item');
-    menuItems.forEach(menuItem => menuItem.addEventListener('click', ()=>{
-
+    menuItems.forEach(menuItem => menuItem.addEventListener('click', ({target})=>{
+      this.closeMenu();
     }))
 
-    this.sortContainer.addEventListener('click', ()=>{
-      this.openMenu();
+
+    this.sortContainer.addEventListener('click', ({})=>{
+      if(!this.sortContainer.querySelector(`.${this.sortMenuSelector}_open`)) this.openMenu()
+      else this.closeMenu()
     })
+
+
   }
 
   openMenu() {
@@ -23,9 +27,14 @@ export class Sort {
 
   }
   closeMenu() {
-    const menuList = this.sortContainer.querySelector(this.sortMenuSelector);
-    menuList.classList.add('sort__list_open')
-  }
+    const menuList = this.sortContainer.querySelector(`.${this.sortMenuSelector}`);
+    menuList.classList.remove(`${this.sortMenuSelector}_open`);
+    // menuList.classList.add('sort__list_open');
 
+
+  }
+  changeName(){
+
+  }
 
 }
