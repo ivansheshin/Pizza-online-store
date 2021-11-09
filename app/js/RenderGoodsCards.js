@@ -19,7 +19,8 @@ export class RenderGoodsCards {
             </div>
           </div>
           <div class="assortment__price-to-add">
-            <span class="assortment__price">от ${item.price}</span>
+            <span>от</span>
+            <span class="assortment__price">${item.price}</span>
             <button class="assortment__btn">+Добавить</button>
           </div>
         </div>`)
