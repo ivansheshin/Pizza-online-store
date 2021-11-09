@@ -24,8 +24,7 @@ export class Sort {
   }
 
 
-
-  openAndCloseMenu(){
+  openAndCloseMenu() {
     this.sortContainer.addEventListener('click', () => {
 
       const menuList = this.sortContainer.querySelector(`.${this.sortMenuSelector}`)
@@ -34,23 +33,23 @@ export class Sort {
     })
   }
 
-  changeName(){
+  changeName() {
     const menuItems = this.sortContainer.querySelectorAll(`.${this.sortMenuItemSelector}`)
     const menuButton = this.sortContainer.querySelector(`.${this.sortMenuButtonSelector}`)
 
-    menuItems.forEach(menuItem => menuItem.addEventListener('click', ({target})=>{
+    menuItems.forEach(menuItem => menuItem.addEventListener('click', ({target}) => {
       menuButton.textContent = target.textContent
     }))
 
   }
 
-  sortByName(pizzaAssortmentNode){
+  sortByName(pizzaAssortmentNode) {
     const pizzaNames = document.getElementsByClassName(`${this.pizzaNamesSelector}`)
 
     const sortedPizzaNames = [...pizzaNames].sort((firstItem, secondItem) => {
-      if(firstItem.textContent > secondItem.textContent) return 1
-      if(firstItem.textContent < secondItem.textContent) return -1
-      if(firstItem.textContent === secondItem.textContent) return 0
+      if (firstItem.textContent > secondItem.textContent) return 1
+      if (firstItem.textContent < secondItem.textContent) return -1
+      if (firstItem.textContent === secondItem.textContent) return 0
     });
 
     const pizzaItems = [...sortedPizzaNames].map(item => item.parentNode)
@@ -60,14 +59,14 @@ export class Sort {
   }
 
 
-  sortByPrice(pizzaAssortmentNode){
+  sortByPrice(pizzaAssortmentNode) {
     const pizzaPrices = document.getElementsByClassName(`${this.pizzaPricesSelector}`)
 
-    const sortedPizzaPrices = [...pizzaPrices].sort((fItem, sItem) => fItem.textContent - sItem.textContent)
+    const sortedPizzaPrices = [...pizzaPrices].sort((firstItem, secondItem) => firstItem.textContent - secondItem.textContent)
 
     const pizzaItems = [...sortedPizzaPrices]
-        .map(item => item.parentNode)
-        .map(item => item.parentNode)
+      .map(item => item.parentNode)
+      .map(item => item.parentNode)
 
     const sortPriceCriterion = this.sortContainer.querySelector('#price')
 
@@ -75,8 +74,8 @@ export class Sort {
 
   }
 
-  handleTypeClick(sortCriterion, pizzaAssortmentNode, parentNodeList){
-    sortCriterion.addEventListener('click', () =>  pizzaAssortmentNode.append(...parentNodeList))
+  handleTypeClick(sortCriterion, pizzaAssortmentNode, parentNodeList) {
+    sortCriterion.addEventListener('click', () => pizzaAssortmentNode.append(...parentNodeList))
 
   }
 
