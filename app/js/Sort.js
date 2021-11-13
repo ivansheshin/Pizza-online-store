@@ -39,23 +39,25 @@ export class Sort {
 
     menuItems.forEach(menuItem => menuItem.addEventListener('click', ({target}) => {
       menuButton.textContent = target.textContent
+
     }))
 
   }
 
   sortByName(pizzaAssortmentNode) {
-    const pizzaNames = document.getElementsByClassName(`${this.pizzaNamesSelector}`)
+    const pizzaNames = this.pizzaAssortmentListNode.querySelectorAll(`.${this.pizzaNamesSelector}`)
 
     const sortedPizzaNames = [...pizzaNames].sort((firstItem, secondItem) => {
-      if (firstItem.textContent > secondItem.textContent) return 1
-      if (firstItem.textContent < secondItem.textContent) return -1
-      if (firstItem.textContent === secondItem.textContent) return 0
+
+      return firstItem.textContent.localeCompare(secondItem.textContent)
+
     });
 
-    const pizzaItems = [...sortedPizzaNames].map(item => item.parentNode)
+    const pizzaItems = sortedPizzaNames.map(item => item.parentNode)
     const sortNameCriterion = this.sortContainer.querySelector('#name')
 
     this.handleTypeClick(sortNameCriterion, pizzaAssortmentNode, pizzaItems)
+
   }
 
 
@@ -64,9 +66,9 @@ export class Sort {
 
     const sortedPizzaPrices = [...pizzaPrices].sort((firstItem, secondItem) => firstItem.textContent - secondItem.textContent)
 
-    const pizzaItems = [...sortedPizzaPrices]
-      .map(item => item.parentNode)
-      .map(item => item.parentNode)
+    const pizzaItems = sortedPizzaPrices
+      .map(Item => Item.parentNode)
+      .map(innerItem => innerItem.parentNode)
 
     const sortPriceCriterion = this.sortContainer.querySelector('#price')
 
