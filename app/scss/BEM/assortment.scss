@@ -63,23 +63,24 @@
     }
     &__item{
         @include pizza-info;
-
     }
-    &__item_clicked{
-        background-color: #fff;
-    }
-
-    &__size{
-        display: flex;
-    }
-    &__size > span{
-        @include pizza-info;
-    }
-    &__type > span:hover{
+    &__item:hover{
         cursor: pointer;
         transition: .5s;
     }
-    &__size > span:hover{
+    &__item_selected{
+        background-color: var(--pizza-info-color-selected);
+    }
+    &__size{
+        display: flex;
+    }
+    &__size-item{
+        @include pizza-info;
+    }
+    &__size-item_selected{
+        background-color: var(--pizza-info-color-selected);
+    }
+    &__size-item:hover{
         cursor: pointer;
         transition: .5s;
     }

@@ -15,7 +15,7 @@ export class RenderGoodsCards {
                   ${item.dough.map(item => `<span class="pizza-information__item">${item}</span>`).join('')}
             </div>
             <div class="pizza-information__size">
-                   ${item.sizes.map(item => `<span>${item}</span>`).join('')}
+                   ${item.sizes.map(item => `<span class="pizza-information__size-item">${item}</span>`).join('')}
             </div>
           </div>
           <div class="assortment__price-to-add">
