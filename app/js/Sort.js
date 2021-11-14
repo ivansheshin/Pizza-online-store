@@ -64,7 +64,7 @@ export class Sort {
   sortByPrice(pizzaAssortmentNode) {
     const pizzaPrices = document.getElementsByClassName(`${this.pizzaPricesSelector}`)
 
-    const sortedPizzaPrices = [...pizzaPrices].sort((firstItem, secondItem) => firstItem.textContent - secondItem.textContent)
+    const sortedPizzaPrices = [...pizzaPrices].sort((firstItem, secondItem) => Number(firstItem.textContent) - Number(secondItem.textContent))
 
     const pizzaItems = sortedPizzaPrices
       .map(Item => Item.parentNode)
