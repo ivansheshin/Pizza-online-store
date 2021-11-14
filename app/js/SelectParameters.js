@@ -2,17 +2,17 @@ export class SelectParameters {
   constructor(pizzaInformationContainers) {
     this.pizzaInformationContainers = pizzaInformationContainers
     this.pizzaTypeItemSelector = 'pizza-information__type-item'
-    this.pizzaTypeItemSelectedSelector = 'pizza-information__type-item_selected'
+    this.pizzaSelectedTypeItemSelector = 'pizza-information__type-item_selected'
     this.pizzaSizeItemSelector = 'pizza-information__size-item'
-    this.pizzaSizeItemSelectedSelector = 'pizza-information__size-item_selected'
+    this.pizzaSelectedSizeItemSelector = 'pizza-information__size-item_selected'
 
     this.init()
 
   }
 
   init() {
-    this.selectParameters(this.pizzaTypeItemSelector, this.pizzaTypeItemSelectedSelector)
-    this.selectParameters(this.pizzaSizeItemSelector, this.pizzaSizeItemSelectedSelector)
+    this.selectParameters(this.pizzaTypeItemSelector, this.pizzaSelectedTypeItemSelector)
+    this.selectParameters(this.pizzaSizeItemSelector, this.pizzaSelectedSizeItemSelector)
 
   }
 
