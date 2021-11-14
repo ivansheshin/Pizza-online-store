@@ -1,8 +1,10 @@
 export class SelectParameters {
   constructor(pizzaInformationContainers) {
     this.pizzaInformationContainers = pizzaInformationContainers
+
     this.pizzaTypeItemSelector = 'pizza-information__type-item'
     this.pizzaSelectedTypeItemSelector = 'pizza-information__type-item_selected'
+
     this.pizzaSizeItemSelector = 'pizza-information__size-item'
     this.pizzaSelectedSizeItemSelector = 'pizza-information__size-item_selected'
 
@@ -17,14 +19,14 @@ export class SelectParameters {
   }
 
   selectParameters(parameter, parameterSelected) {
-    this.pizzaInformationContainers.forEach(pizzaInformationContainer => {
-      const pizzaParameters = pizzaInformationContainer.querySelectorAll(`.${parameter}`)
+    this.pizzaInformationContainers.forEach(container => {
+      const pizzaParameters = container.querySelectorAll(`.${parameter}`)
 
       pizzaParameters.forEach((parameter, index) => {
         if (index === 0) parameter.classList.add(parameterSelected)
 
         parameter.addEventListener('click', ({target}) => {
-          const selectedParameter = [...pizzaParameters].find(pizzaParameter => pizzaParameter.classList.contains(parameterSelected))
+          const selectedParameter = [...pizzaParameters].find(parameter => parameter.classList.contains(parameterSelected))
 
           selectedParameter.classList.remove(parameterSelected)
           target.classList.add(parameterSelected)

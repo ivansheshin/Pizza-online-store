@@ -21,6 +21,7 @@ export class Sort {
     this.openAndCloseMenu()
     this.sortByName(this.pizzaAssortmentListNode)
     this.sortByPrice(this.pizzaAssortmentListNode)
+
   }
 
 
@@ -73,7 +74,7 @@ export class Sort {
     })
 
     const pizzaItems = sortedPizzaPrices
-      .map(Item => Item.parentNode)
+      .map(item => item.parentNode)
       .map(innerItem => innerItem.parentNode)
 
     const sortPriceCriterion = this.sortContainer.querySelector('#price')
