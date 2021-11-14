@@ -69,6 +69,7 @@ export class Sort {
       const secondItemNum = Number(secondItem.textContent.match(/\d+/))
 
       return firsItemNum - secondItemNum
+
     })
 
     const pizzaItems = sortedPizzaPrices
