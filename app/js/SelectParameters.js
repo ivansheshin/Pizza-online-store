@@ -1,17 +1,37 @@
 export class SelectParameters {
-  constructor() {
-    this.pizzaInformationNode = document.querySelector('.pizza-information')
-    this.pizzaTypeContainerSelector = 'pizza-information__type'
-    this.pizzaSizeContainerSelector = 'pizza-information__size'
-
+  constructor(pizzaInformationContainers) {
+    this.pizzaInformationContainers = pizzaInformationContainers
+    this.pizzaTypeItemSelector = 'pizza-information__type-item'
+    this.pizzaTypeItemSelectedSelector = 'pizza-information__type-item_selected'
+    this.pizzaSizeItemSelector = 'pizza-information__size-item'
+    this.pizzaSizeItemSelectedSelector = 'pizza-information__size-item_selected'
 
     this.init()
+
   }
+
   init() {
-    this.selectPizzaType()
+    this.selectParameters(this.pizzaTypeItemSelector, this.pizzaTypeItemSelectedSelector)
+    this.selectParameters(this.pizzaSizeItemSelector, this.pizzaSizeItemSelectedSelector)
+
   }
-  selectPizzaType() {
-    const pizzaTypeContainer = this.pizzaInformationNode.querySelector(`.${this.pizzaTypeContainerSelector}`)
-    console.log(pizzaTypeContainer)
+
+  selectParameters(parameter, parameterSelected) {
+    this.pizzaInformationContainers.forEach(pizzaInformationContainer => {
+      const pizzaParameters = pizzaInformationContainer.querySelectorAll(`.${parameter}`)
+
+      pizzaParameters.forEach((pizzaSize, index) => {
+        if (index === 0) pizzaSize.classList.add(`${parameterSelected}`)
+
+        pizzaSize.addEventListener('click', ({target}) => {
+          const selectedParameter = [...pizzaParameters].find(item => item.classList.contains(`${parameterSelected}`))
+
+          selectedParameter.classList.remove(`${parameterSelected}`)
+          target.classList.add(`${parameterSelected}`)
+
+        })
+      })
+    })
   }
+
 }

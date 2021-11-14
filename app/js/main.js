@@ -18,5 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const sortContainer = document.querySelector('.sort')
   new Sort(assortmentContainer, sortContainer)
 
-  new SelectParameters()
+  const pizzaInformationContainers = document.querySelectorAll('.pizza-information');
+  new SelectParameters(pizzaInformationContainers)
 })
