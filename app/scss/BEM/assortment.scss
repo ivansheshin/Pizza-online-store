@@ -59,16 +59,17 @@
     border-radius: 10px;
     &__type {
         display: flex;
-        flex-wrap: wrap
+        flex-wrap: wrap;
+        margin-bottom: 6px;
     }
-    &__item{
+    &__type-item{
         @include pizza-info;
     }
-    &__item:hover{
+    &__type-item:hover{
         cursor: pointer;
         transition: .5s;
     }
-    &__item_selected{
+    &__type-item_selected{
         background-color: var(--pizza-info-color-selected);
     }
     &__size{
