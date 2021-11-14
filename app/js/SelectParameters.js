@@ -21,13 +21,13 @@ export class SelectParameters {
       const pizzaParameters = pizzaInformationContainer.querySelectorAll(`.${parameter}`)
 
       pizzaParameters.forEach((parameter, index) => {
-        if (index === 0) parameter.classList.add(`${parameterSelected}`)
+        if (index === 0) parameter.classList.add(parameterSelected)
 
         parameter.addEventListener('click', ({target}) => {
-          const selectedParameter = [...pizzaParameters].find(item => item.classList.contains(`${parameterSelected}`))
+          const selectedParameter = [...pizzaParameters].find(pizzaParameter => pizzaParameter.classList.contains(parameterSelected))
 
-          selectedParameter.classList.remove(`${parameterSelected}`)
-          target.classList.add(`${parameterSelected}`)
+          selectedParameter.classList.remove(parameterSelected)
+          target.classList.add(parameterSelected)
 
         })
       })
