@@ -42,7 +42,11 @@
     }
 
 }
-
+.sort-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 .sort {
     position: relative;
 
