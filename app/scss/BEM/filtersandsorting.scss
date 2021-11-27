@@ -1,105 +1,108 @@
 .pizza-types-and-sort {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  justify-content: space-evenly;
 
-    @media (max-width: 840px) {
-        flex-direction: column;
-    }
+  @media (max-width: 840px) {
+    flex-direction: column;
+  }
 }
 
 .filter-categories {
-    display: flex;
-    gap: 15px;
-    font-weight: 700;
-    margin: 0;
+  display: flex;
+  gap: 15px;
+  font-weight: 700;
+  margin: 0;
 
-    padding: 0 10px 0;
-    flex-wrap: wrap;
+  padding: 0 10px 0;
+  flex-wrap: wrap;
 
-    &__item {
-        padding: 13px 30px;
-        display: inline-block;
-        cursor: pointer;
-        border-radius: 30px;
-        background-color: #f9f9f9;
+  &__item {
+    padding: 13px 30px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: var(--color-bg-filter-item);
 
-        height: min-content;
-        transition: filter 0.3s;
+    height: min-content;
+    transition: background-color .3s;
 
-        &:hover {
-            filter: brightness(98%);
-        }
-
-        &_active {
-            background-color: var(--categories-color-hover);
-            color: #FFF;
-            &:hover{
-                filter: brightness(200%);
-            }
-        }
+    &:hover {
+      filter: brightness(98%);
     }
 
+    &_active {
+      background-color: var(--color-bg-filter-item-active);
+      color: var(--color-text-filter-item);
+
+      &:hover {
+        background-color: var(--color-bg-filter-item-active-hover)
+      }
+    }
+  }
 }
+
 .sort-wrap {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+
 .sort {
-    position: relative;
+  position: relative;
 
-    &__title {
-        font-weight: 700;
-        cursor: pointer;
+  &__title {
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  &__button {
+    text-transform: lowercase;
+    text-decoration: underline dashed 1px;
+    border: none;
+    background-color: var(--color-bg-button-sort);
+    color: var(--color-text-button-sort);
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+  }
+
+  &__list {
+    position: absolute;
+    border-radius: 10px;
+    background-color: var(--color-bg-modal-list);
+    padding: 10px 0;
+    min-width: 160px;
+
+    right: 0;
+    top: 15px;
+    display: none;
+    text-transform: lowercase;
+
+    box-shadow: 3px 3px 8px var(--color-shadow-sort);
+
+    &_open {
+      display: block;
     }
+  }
 
-    &__button {
-        text-transform: lowercase;
-        text-decoration: underline dashed 1px;
-        border: none;
-        background-color: #FFF;
-        color: var(--orange-color);
-        font-family: inherit;
-        font-size: inherit;
-        cursor: pointer;
-    }
+  &__item {
+    padding: 12px 20px;
+    cursor: pointer;
+  }
 
-    &__list {
-        position: absolute;
-        border-radius: 10px;
-        background-color: #FFF;
-        padding: 10px 0;
-        min-width: 160px;
+  &__item:hover {
+    background-color: var(--color-bg-modal-list-item-sort-hover);
+    transition: background-color .3s;
+  }
 
-        right: 0;
-        top: 15px;
-        display: none;
-        text-transform: lowercase;
-        &_open{
-            display: block;
-        }
-    }
+  &__svg {
+    cursor: pointer;
+  }
 
-    &__item {
-        padding: 12px 20px;
-        cursor: pointer;
-    }
-
-    &__item:hover{
-        transition: .3s;
-        background-color: rgba(254, 95, 30, 0.05);
-    }
-
-    &__svg {
-        cursor: pointer;
-    }
-
-    &__svg:active {
-        transition: .5s;
-        transform: rotate(180deg);
-    }
-
-
+  &__svg:active {
+    transform: rotate(180deg);
+    transition: transform .5s;
+  }
 }

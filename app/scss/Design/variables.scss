@@ -1,17 +1,44 @@
 :root {
+    // Header
+    --color-border-header: #f6f6f6;
+    --color-text-header: #7b7b7b;
+    --color-text-title: #000;
+    --color-bg-order: #fe5f1e;
+    --color-text-link: #fff;
+    //Кнопка добавить в ассортименте
+    --color-text-assortment-button: #fe5f1e;
+    --color-text-assortment-button-hover: #fff;
+    --color-bg-assortment-button-hover: #fe5f1e;
+    --color-border-assortment-button: #fe5f1e;
+
+    // Информация о пицце
+    --color-bg-pizza-info: #f3f3f3;
+    --color-bg-pizza-info-item-selected: #fff;
+
+    //Корзина
+    --color-text-basket: #777;
+    --color-text-button-comeback-basket: #fff;
+    --color-bg-button-comeback-basket: #000;
+    --color-bg-button-comeback-basket-hover:#262626;
+
+    //Фильтры
+    --color-text-filter-item: #fff;
+    --color-bg-filter-item: #f9f9f9;
+    --color-bg-filter-item-hover: #262626;
+    --color-bg-filter-item-active: #181818;
+    --color-bg-filter-item-active-hover: #535252;
+
+    //Сортировка
+    --color-bg-button-sort: #fff;
+    --color-text-button-sort: #fe5f1e;
+    --color-bg-modal-list-sort: #f9f9f9;
+    --color-bg-modal-list-item-sort-hover: rgba(254, 95, 30, 0.05);
+        // Тень в модалке сортировки
+    --color-shadow-sort: #232323;
+
+
+
+
+
     --bg-color: #ffdf8c;
-    --gray-color: #7b7b7b;
-    --orange-color: #fe5f1e;
-    --main-color: #232323;
-    --h1-color: #181818;
-    --categories-color-hover: #282828;
-    --header-border-color: #f6f6f6;
-    --pizza-info-color: #f3f3f3;
-    --pizza-info-color-selected: #fff;
-
-
-
-    --container-indent: 60px;
-    --active-block: block;
-    --deactive-block: none;
 }

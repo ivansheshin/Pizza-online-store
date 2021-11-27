@@ -1,98 +1,98 @@
 // @import './Design/mixins.scss';
 
 header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 0 var(--container-indent);
-    padding: 40px 0;
-    @media (max-width: 700px) {
-        flex-direction: column;
-        align-items: center;
-        padding-bottom: 20px;
-    }
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 60px;
+  padding: 40px 0;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+  }
 }
 
 .header {
-    border-bottom: 1px solid var(--header-border-color);
+  border-bottom: 1px solid var(--color-border-header);
 }
 
 .logo-name-block {
-    display: flex;
+  display: flex;
 
-    &__text>h1 {
-        font-size: 24px;
-        margin: 0;
-        text-transform: uppercase;
-        display: block;
-    }
+  &__text > h1 {
+    font-size: 24px;
+    margin: 0;
+    text-transform: uppercase;
+    display: block;
+  }
 
-    &__text>p {
-        font-size: 15px;
-        color: var(--gray-color);
-        margin: 0;
-        text-transform: lowercase;
-    }
+  &__text > p {
+    font-size: 15px;
+    color: var(--color-text-header);
+    margin: 0;
+    text-transform: lowercase;
+  }
 
-    &__logo {
-        margin-right: 10px;
-    }
+  &__logo {
+    margin-right: 10px;
+  }
 
-    &__link {
-        color: #000;
-    }
+  &__link {
+    color: var(--color-text-title);
+  }
 }
 
 .order {
-    @include button-categories-style(var(--orange-color), 140px);
+  @include button-categories-style(var(--color-bg-order), 140px);
 
-    color: #FFF;
+  font-weight: 600;
 
-    font-weight: 600;
+  display: flex;
 
+  @media (max-width: 700px) {
+    margin-top: 10px;
+    height: 49px;
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    background-color: darken($color: #fe5f1e, $amount: 10%);
+    transition: background-color .3s;
+  }
+
+  &:active {
+    background-color: darken($color: #fe5f1e, $amount: 15%);
+    transition: background-color .3s;
+    position: relative;
+    top: 2px;
+  }
+
+  &__link {
+    margin: 0 auto;
+    color: var(--color-text-link);
     display: flex;
-    @media (max-width: 700px) {
-       margin-top: 10px;
-       height: 49px;
-    }
+    align-items: center;
+  }
 
-    &:hover,
-    &:focus {
-        cursor: pointer;
-        transition: .3s;
-        background-color: darken($color: #fe5f1e, $amount: 10%);
-    }
+  &__price::after {
+    content: '\20BD';
+    margin-left: 5px;
+  }
 
-    &:active {
-        transition: .3s;
-        background-color: darken($color: #fe5f1e, $amount: 15%);
-        position: relative;
-        top: 2px;
-    }
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-    &__link {
-        margin: 0 auto;
-        color: #FFF;
-        display: flex;
-        align-items: center;
-    }
-
-    &__price::after {
-        content: '\20BD';
-        margin-left: 5px;
-    }
-
-    &__quantity {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    &__quantity::before {
-        content: '';
-        background-color: #FFFFFF40;
-        width: 1px;
-        height: 25px;
-        margin-left: 10px;
-    }
+  &__quantity::before {
+    content: '';
+    background-color: #FFFFFF40;
+    width: 1px;
+    height: 25px;
+    margin-left: 10px;
+  }
 }
