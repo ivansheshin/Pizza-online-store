@@ -1,93 +1,78 @@
-export class Sort {
+export default class Sort {
   constructor(container, sortContainer) {
-    this.container = container
-    this.sortContainer = sortContainer
+    this.container = container;
+    this.sortContainer = sortContainer;
 
-    this.sortMenuSelector = 'sort__list'
-    this.sortMenuItemSelector = 'sort__item'
-    this.sortMenuOpenSelector = 'sort__list_open'
-    this.sortMenuButtonSelector = 'sort__button'
+    this.sortMenuSelector = 'sort__list';
+    this.sortMenuItemSelector = 'sort__item';
+    this.sortMenuOpenSelector = 'sort__list_open';
+    this.sortMenuButtonSelector = 'sort__button';
 
-    this.pizzaAssortmentListSelector = 'assortment__list'
-    this.pizzaAssortmentListNode = document.querySelector(`.${this.pizzaAssortmentListSelector}`)
-    this.pizzaNamesSelector = 'assortment__pizza-name'
-    this.pizzaPricesSelector = 'assortment__price'
+    this.pizzaAssortmentListSelector = 'assortment__list';
+    this.pizzaAssortmentListNode = document.querySelector(`.${this.pizzaAssortmentListSelector}`);
+    this.pizzaNamesSelector = 'assortment__pizza-name';
+    this.pizzaPricesSelector = 'assortment__price';
 
-    this.init()
+    this.init();
   }
 
   init() {
-    this.changeName()
-    this.openAndCloseMenu()
-    this.sortByName(this.pizzaAssortmentListNode)
-    this.sortByPrice(this.pizzaAssortmentListNode)
-
+    this.changeName();
+    this.openAndCloseMenu();
+    this.sortByName(this.pizzaAssortmentListNode);
+    this.sortByPrice(this.pizzaAssortmentListNode);
   }
-
 
   openAndCloseMenu() {
     this.sortContainer.addEventListener('click', () => {
-
-      const menuList = this.sortContainer.querySelector(`.${this.sortMenuSelector}`)
-      menuList.classList.toggle(this.sortMenuOpenSelector)
-
-    })
+      const menuList = this.sortContainer.querySelector(`.${this.sortMenuSelector}`);
+      menuList.classList.toggle(this.sortMenuOpenSelector);
+    });
   }
 
   changeName() {
-    const menuItems = this.sortContainer.querySelectorAll(`.${this.sortMenuItemSelector}`)
-    const menuButton = this.sortContainer.querySelector(`.${this.sortMenuButtonSelector}`)
+    const menuItems = this.sortContainer.querySelectorAll(`.${this.sortMenuItemSelector}`);
+    const menuButton = this.sortContainer.querySelector(`.${this.sortMenuButtonSelector}`);
 
-    menuItems.forEach(menuItem => menuItem.addEventListener('click', ({
-      target
+    menuItems.forEach((menuItem) => menuItem.addEventListener('click', ({
+      target,
     }) => {
-      menuButton.textContent = target.textContent
-
-    }))
-
+      menuButton.textContent = target.textContent;
+    }));
   }
 
   sortByName(pizzaAssortmentNode) {
-    const pizzaNames = this.pizzaAssortmentListNode.querySelectorAll(`.${this.pizzaNamesSelector}`)
+    const pizzaNames = this.pizzaAssortmentListNode.querySelectorAll(`.${this.pizzaNamesSelector}`);
 
-    const sortedPizzaNames = [...pizzaNames].sort((firstItem, secondItem) => {
+    const sortedPizzaNames = [...pizzaNames]
+      .sort((firstItem, secondItem) => firstItem.textContent.localeCompare(secondItem.textContent));
 
-      return firstItem.textContent.localeCompare(secondItem.textContent)
+    const pizzaItems = sortedPizzaNames.map((item) => item.parentNode);
+    const sortNameCriterion = this.sortContainer.querySelector('#name');
 
-    });
-
-    const pizzaItems = sortedPizzaNames.map(item => item.parentNode)
-    const sortNameCriterion = this.sortContainer.querySelector('#name')
-
-    this.handleTypeClick(sortNameCriterion, pizzaAssortmentNode, pizzaItems)
-
+    this.handleTypeClick(sortNameCriterion, pizzaAssortmentNode, pizzaItems);
   }
 
-
   sortByPrice(pizzaAssortmentNode) {
-    const pizzaPrices = document.getElementsByClassName(`${this.pizzaPricesSelector}`)
+    const pizzaPrices = document.getElementsByClassName(`${this.pizzaPricesSelector}`);
 
     const sortedPizzaPrices = [...pizzaPrices].sort((firstItem, secondItem) => {
-      const firsItemNum = Number(firstItem.textContent.match(/\d+/))
-      const secondItemNum = Number(secondItem.textContent.match(/\d+/))
+      const firsItemNum = Number(firstItem.textContent.match(/\d+/));
+      const secondItemNum = Number(secondItem.textContent.match(/\d+/));
 
-      return firsItemNum - secondItemNum
-
-    })
+      return firsItemNum - secondItemNum;
+    });
 
     const pizzaItems = sortedPizzaPrices
-      .map(item => item.parentNode)
-      .map(innerItem => innerItem.parentNode)
+      .map((item) => item.parentNode)
+      .map((innerItem) => innerItem.parentNode);
 
-    const sortPriceCriterion = this.sortContainer.querySelector('#price')
+    const sortPriceCriterion = this.sortContainer.querySelector('#price');
 
-    this.handleTypeClick(sortPriceCriterion, pizzaAssortmentNode, pizzaItems)
-
+    this.handleTypeClick(sortPriceCriterion, pizzaAssortmentNode, pizzaItems);
   }
 
   handleTypeClick(sortCriterion, pizzaAssortmentNode, parentNodeList) {
-    sortCriterion.addEventListener('click', () => pizzaAssortmentNode.append(...parentNodeList))
-
+    sortCriterion.addEventListener('click', () => pizzaAssortmentNode.append(...parentNodeList));
   }
-
 }
