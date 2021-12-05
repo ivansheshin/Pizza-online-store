@@ -2,8 +2,8 @@
 
 header {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin: 0 60px;
   padding: 40px 0;
 
@@ -22,16 +22,16 @@ header {
   display: flex;
 
   &__text > h1 {
-    font-size: 24px;
-    margin: 0;
-    text-transform: uppercase;
     display: block;
+    margin: 0;
+    font-size: 24px;
+    text-transform: uppercase;
   }
 
   &__text > p {
-    font-size: 15px;
-    color: var(--color-text-header);
     margin: 0;
+    color: var(--color-text-header);
+    font-size: 15px;
     text-transform: lowercase;
   }
 
@@ -45,54 +45,57 @@ header {
 }
 
 .order {
+  display: flex;
+  font-weight: 600;
+  transition: background-color 1s;
+
   @include button-categories-style(var(--color-bg-order), 140px);
 
-  font-weight: 600;
-
-  display: flex;
-
   @media (max-width: 700px) {
-    margin-top: 10px;
     height: 49px;
+    margin-top: 10px;
   }
 
   &:hover,
   &:focus {
     cursor: pointer;
-    background-color: darken($color: #fe5f1e, $amount: 10%);
-    transition: background-color .3s;
+    filter: brightness(90%);
+    transition: brightness 2s;
+
+    // шо за хуйня
   }
 
   &:active {
-    background-color: darken($color: #fe5f1e, $amount: 15%);
-    transition: background-color .3s;
     position: relative;
     top: 2px;
+    filter: brightness(85%);
+
+    // шо за хуйня
   }
 
   &__link {
-    margin: 0 auto;
-    color: var(--color-text-link);
     display: flex;
     align-items: center;
+    margin: 0 auto;
+    color: var(--color-text-link);
   }
 
   &__price::after {
-    content: '\20BD';
     margin-left: 5px;
+    content: "\20BD";
   }
 
   &__quantity {
     display: flex;
-    align-items: center;
     gap: 10px;
+    align-items: center;
   }
 
   &__quantity::before {
-    content: '';
-    background-color: #FFFFFF40;
     width: 1px;
     height: 25px;
     margin-left: 10px;
+    background-color: #ffffff40;
+    content: "";
   }
 }

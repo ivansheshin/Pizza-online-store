@@ -1,38 +1,36 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@400;600;800;900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@400;600;800;900&display=swap");
 @import "Design/mixins";
 @import "Design/variables";
-
-
 @import "BEM/assortment";
 @import "BEM/cart-main";
 @import "BEM/header";
 @import "BEM/filtersandsorting";
 
-body{
-    font-family: 'Encode Sans SC', sans-serif;
-    background-color: var(--main-bg-color);
-    box-sizing: border-box;
-    margin: 0 auto;
-    padding: 0;
-    color: var(--main-color);
-    
+body {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  color: var(--main-text-color);
+  font-family: "Encode Sans SC", sans-serif;
+  background-color: var(--main-bg-color);
 }
-a {
-    text-decoration: none;
-}
-ul{
-    list-style: none;
-}
-main{
-    padding: 40px 0;
-}
-.container{
-    background-color: #fff;
-    margin: 50px auto;
 
-    border-radius: 10px;
-    width: calc(100vw - 100px);
-    max-width: 1400px;
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+main {
+  padding: 40px 0;
+}
+
+.container {
+  width: calc(100vw - 100px);
+  max-width: 1400px;
+  margin: 50px auto;
+  background-color: var(--secondary-bg-color);
+  border-radius: 10px;
 }
