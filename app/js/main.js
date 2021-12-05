@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterCategories = document.querySelectorAll('.filter-categories__item')
   new Filter(assortmentContainer, filterCategories)
 
-  const sortContainer = document.querySelector('.sort')
+  const sortContainer = document.querySelector('.sort');
   new Sort(assortmentContainer, sortContainer)
 
   const pizzaInformationContainers = document.querySelectorAll('.pizza-information');

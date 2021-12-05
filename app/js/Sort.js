@@ -38,7 +38,9 @@ export class Sort {
     const menuItems = this.sortContainer.querySelectorAll(`.${this.sortMenuItemSelector}`)
     const menuButton = this.sortContainer.querySelector(`.${this.sortMenuButtonSelector}`)
 
-    menuItems.forEach(menuItem => menuItem.addEventListener('click', ({target}) => {
+    menuItems.forEach(menuItem => menuItem.addEventListener('click', ({
+      target
+    }) => {
       menuButton.textContent = target.textContent
 
     }))
