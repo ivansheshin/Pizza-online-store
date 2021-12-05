@@ -2,8 +2,8 @@
   margin: 60px;
 
   & > h2 {
-    font-weight: 800;
     margin-bottom: 35px;
+    font-weight: 800;
     font-size: 28px;
     line-height: 30px;
   }
@@ -28,43 +28,43 @@
   }
 
   &__price-to-add {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
     font-weight: 600;
     font-size: 22px;
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 
   &__price::after {
-    content: '\20BD';
     margin-left: 5px;
+    content: "\20BD";
   }
 
   &__btn {
+    padding: 10px 20px;
+    color: var(--color-text-assortment-button);
     font-weight: 700;
     font-size: 16px;
-    color: var(--color-text-assortment-button);
-    padding: 10px 20px;
-    @include button-categories-style(#fff, 130px);
     border: 1px solid var(--color-border-assortment-button);
+
+    @include button-categories-style(#fff, 130px);
   }
 
   &__btn:hover {
     color: var(--color-text-assortment-button-hover);
     background-color: var(--color-bg-assortment-button-hover);
     cursor: pointer;
-    transition: background-color .5s, color .5s;
+    transition: background-color 0.5s, color 0.5s;
   }
-
 }
 
 .pizza-information {
-  background-color: var(--color-bg-pizza-info);
-  font-size: 14px;
-  font-weight: 700;
   padding: 6px;
+  font-weight: 700;
+  font-size: 14px;
   text-align: center;
+  background-color: var(--color-bg-pizza-info);
   border-radius: 10px;
 
   &__type {
@@ -83,7 +83,7 @@
 
   &__type-item_selected {
     background-color: var(--color-bg-pizza-info-item-selected);
-    transition: background-color .5s;
+    transition: background-color 0.5s;
   }
 
   &__size {
@@ -96,7 +96,7 @@
 
   &__size-item_selected {
     background-color: var(--color-bg-pizza-info-item-selected);
-    transition: background-color .5s;
+    transition: background-color 0.5s;
   }
 
   &__size-item:hover {

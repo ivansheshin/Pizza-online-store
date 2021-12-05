@@ -1,16 +1,16 @@
 .main-empty-cart {
-  margin: 90px auto;
   max-width: 560px;
-  text-align: center;
+  margin: 90px auto;
   padding: 40px 0;
+  text-align: center;
 
   &__title {
     font-size: 32px;
   }
 
   &__text {
-    font-size: 18px;
     color: var(--color-text-basket);
+    font-size: 18px;
     line-height: 145%;
   }
 
@@ -22,18 +22,19 @@
 
   &__link {
     display: block;
-    color: var(--color-text-button-comeback-basket);
-    @include button-categories-style(#000, 230px);
-    padding: 12px 0 14px;
-    font-size: 18px;
-    font-weight: 700;
     margin: 0 auto;
+    padding: 12px 0 14px;
+    color: var(--color-text-button-comeback-basket);
+    font-weight: 700;
+    font-size: 18px;
+
+    @include button-categories-style(#000, 230px);
   }
 
   &__link:hover,
   &__link:focus {
-    background-color: var(--color-bg-button-comeback-basket-hover );
-    transition: background-color .3s;
+    background-color: var(--color-bg-button-comeback-basket-hover);
+    transition: background-color 0.3s;
   }
 
   &__link:active {
