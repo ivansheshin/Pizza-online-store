@@ -37,16 +37,21 @@ export default class RenderGoodsCards {
   renderPrice() {
     const pizzaContainer = document.getElementsByClassName('assortment__item');
     [...pizzaContainer].forEach((pizzaContainerItem) => {
-      pizzaContainerItem.addEventListener('click', (event) => {
-        const pizzaNameElement = event.currentTarget.querySelector('.assortment__pizza-name');
+      pizzaContainerItem.addEventListener('click', ({ target }) => {
+        const pizzaNameElement = pizzaContainerItem.querySelector('.assortment__pizza-name');
         const pizzaName = pizzaNameElement.textContent;
         const pizzaObject = this.data.find((item) => item.title === pizzaName);
 
-        const choosenSize = event.target.textContent;
-        const returnPrice = pizzaObject.price[choosenSize];
+        const isSizeItemTarget = target.classList.contains('pizza-information__size-item');
 
-        const pizzaPriceElement = event.currentTarget.querySelector('.assortment__price');
-        pizzaPriceElement.textContent = `от ${returnPrice}`;
+        if (isSizeItemTarget) {
+          const choosenSize = target.textContent;
+          const returnPrice = pizzaObject.price[choosenSize];
+
+          const pizzaPriceElement = pizzaContainerItem.querySelector('.assortment__price');
+
+          pizzaPriceElement.textContent = `от ${returnPrice}`;
+        }
       });
     });
   }
