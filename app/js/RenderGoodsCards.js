@@ -2,6 +2,12 @@ export default class RenderGoodsCards {
   constructor(data, container) {
     this.data = data;
     this.container = container;
+    this.init();
+  }
+
+  init() {
+    this.render();
+    this.renderPrice();
   }
 
   render() {
@@ -20,10 +26,28 @@ export default class RenderGoodsCards {
             </div>
           </div>
           <div class="assortment__price-to-add">
-            <span class="assortment__price">от ${item.price}</span>
+            <span class="assortment__price">от ${Object.values(item.price)[0]}</span>
             <button class="assortment__btn">+Добавить</button>
           </div>
         </div>`);
+    });
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  renderPrice() {
+    const pizzaContainer = document.getElementsByClassName('assortment__item');
+    [...pizzaContainer].forEach((pizzaContainerItem) => {
+      pizzaContainerItem.addEventListener('click', (event) => {
+        const pizzaNameElement = event.currentTarget.querySelector('.assortment__pizza-name');
+        const pizzaName = pizzaNameElement.textContent;
+        const pizzaObject = this.data.find((item) => item.title === pizzaName);
+
+        const choosenSize = event.target.textContent;
+        const returnPrice = pizzaObject.price[choosenSize];
+
+        const pizzaPriceElement = event.currentTarget.querySelector('.assortment__price');
+        pizzaPriceElement.textContent = `от ${returnPrice}`;
+      });
     });
   }
 }
