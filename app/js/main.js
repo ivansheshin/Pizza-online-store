@@ -10,8 +10,7 @@ import SelectParameters from 'Script/SelectParameters';
 document.addEventListener('DOMContentLoaded', () => {
   const assortmentContainer = document.querySelector('.assortment__list');
 
-  const renderGoodsCards = new RenderGoodsCards(assortment, assortmentContainer);
-  renderGoodsCards.render();
+  new RenderGoodsCards(assortment, assortmentContainer);
 
   const filterCategories = document.querySelectorAll('.filter-categories__item');
   new Filter(assortmentContainer, filterCategories);
