@@ -72,6 +72,7 @@ export default class Sort {
     this.handleTypeClick(sortPriceCriterion, pizzaAssortmentNode, pizzaItems);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   handleTypeClick(sortCriterion, pizzaAssortmentNode, parentNodeList) {
     sortCriterion.addEventListener('click', () => pizzaAssortmentNode.append(...parentNodeList));
   }
