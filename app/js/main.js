@@ -6,11 +6,13 @@ import RenderGoodsCards from 'Script/RenderGoodsCards';
 import Filter from 'Script/Filters';
 import Sort from 'Script/Sort';
 import SelectParameters from 'Script/SelectParameters';
+import SelectSize from 'Script/SelectSize';
 
 document.addEventListener('DOMContentLoaded', () => {
   const assortmentContainer = document.querySelector('.assortment__list');
 
-  new RenderGoodsCards(assortment, assortmentContainer);
+  const renderGoods = new RenderGoodsCards(assortment, assortmentContainer);
+  renderGoods.render();
 
   const filterCategories = document.querySelectorAll('.filter-categories__item');
   new Filter(assortmentContainer, filterCategories);
@@ -20,4 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const pizzaInformationContainers = document.querySelectorAll('.pizza-information');
   new SelectParameters(pizzaInformationContainers);
+
+  new SelectSize(assortment);
 });

@@ -2,12 +2,6 @@ export default class RenderGoodsCards {
   constructor(data, container) {
     this.data = data;
     this.container = container;
-    this.init();
-  }
-
-  init() {
-    this.render();
-    this.renderPrice();
   }
 
   render() {
@@ -30,29 +24,6 @@ export default class RenderGoodsCards {
             <button class="assortment__btn">+Добавить</button>
           </div>
         </div>`);
-    });
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  renderPrice() {
-    const pizzaContainer = document.getElementsByClassName('assortment__item');
-    [...pizzaContainer].forEach((pizzaContainerItem) => {
-      pizzaContainerItem.addEventListener('click', ({ target }) => {
-        const pizzaNameElement = pizzaContainerItem.querySelector('.assortment__pizza-name');
-        const pizzaName = pizzaNameElement.textContent;
-        const pizzaObject = this.data.find((item) => item.title === pizzaName);
-
-        const isSizeItemTarget = target.classList.contains('pizza-information__size-item');
-
-        if (isSizeItemTarget) {
-          const choosenSize = target.textContent;
-          const returnPrice = pizzaObject.price[choosenSize];
-
-          const pizzaPriceElement = pizzaContainerItem.querySelector('.assortment__price');
-
-          pizzaPriceElement.textContent = `от ${returnPrice}`;
-        }
-      });
     });
   }
 }
