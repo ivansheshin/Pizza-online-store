@@ -50,6 +50,7 @@
 
 .sort {
   position: relative;
+  white-space: nowrap;
 
   &__title {
     font-weight: 700;
