@@ -57,6 +57,12 @@
     cursor: pointer;
     transition: background-color 0.5s, color 0.5s;
   }
+
+  &__btn_active {
+    color: var(--color-text-assortment-button-hover);
+    background-color: var(--color-bg-assortment-button-hover);
+    transition: background-color 0.5s, color 0.5s;
+  }
 }
 
 .pizza-information {
