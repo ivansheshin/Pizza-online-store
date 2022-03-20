@@ -50,7 +50,7 @@ export default class Sort {
     const pizzaItems = sortedPizzaNames.map((item) => item.parentNode);
     const sortNameCriterion = this.sortContainer.querySelector('#name');
 
-    this.handleTypeClick(sortNameCriterion, pizzaAssortmentNode, pizzaItems);
+    Sort.handleTypeClick(sortNameCriterion, pizzaAssortmentNode, pizzaItems);
   }
 
   sortByPrice(pizzaAssortmentNode) {
@@ -69,11 +69,10 @@ export default class Sort {
 
     const sortPriceCriterion = this.sortContainer.querySelector('#price');
 
-    this.handleTypeClick(sortPriceCriterion, pizzaAssortmentNode, pizzaItems);
+    Sort.handleTypeClick(sortPriceCriterion, pizzaAssortmentNode, pizzaItems);
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  handleTypeClick(sortCriterion, pizzaAssortmentNode, parentNodeList) {
+  static handleTypeClick(sortCriterion, pizzaAssortmentNode, parentNodeList) {
     sortCriterion.addEventListener('click', () => pizzaAssortmentNode.append(...parentNodeList));
   }
 }
