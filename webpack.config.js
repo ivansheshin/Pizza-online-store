@@ -27,7 +27,7 @@ const optimization = () => {
 };
 
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`);
-
+// Добавить спрайт лоадер и замутить спрайты
 const cssLoaders = (extra) => {
   const loaders = [{
     loader: MiniCssExtractPlugin.loader,
