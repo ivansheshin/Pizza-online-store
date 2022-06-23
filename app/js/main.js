@@ -11,7 +11,7 @@ import Basket from 'Script/Basket';
 
 document.addEventListener('DOMContentLoaded', () => {
   const request = indexedDB.open('PizzaStore');
-
+  // Отредачить
   const db = request.result;
   const store = db.createObjectStore('books', { keyPath: 'isbn' });
   const titleIndex = store.createIndex('by_title', 'title', { unique: true });
