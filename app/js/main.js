@@ -11,17 +11,36 @@ import Basket from 'Script/Basket';
 
 document.addEventListener('DOMContentLoaded', () => {
   const request = indexedDB.open('PizzaStore');
+  let db;
 
-  const db = request.result;
-  const store = db.createObjectStore('books', { keyPath: 'isbn' });
-  const titleIndex = store.createIndex('by_title', 'title', { unique: true });
-  const authorIndex = store.createIndex('by_author', 'author');
+  request.onupgradeneeded = function() {
+    const dataBase = request.result;
+    const store = dataBase.createObjectStore('assortment', { keyPath: 'assortmentKey' });
+    // const titleIndex = store.createIndex('by_title', 'title', { unique: true });
+    // const authorIndex = store.createIndex('by_author', 'author');
 
-  // Populate with initial data.
-  store.put({ title: 'Quarry Memories', author: 'Fred', isbn: 123456 });
-  store.put({ title: 'Water Buffaloes', author: 'Fred', isbn: 234567 });
-  store.put({ title: 'Bedrock Nights', author: 'Barney', isbn: 345678 });
+    assortment.forEach((assortmentItem) => {
+      store.put({
+        title: assortmentItem.title,
+        // imgAddress: assortmentItem.imgAddress,
+        // altImg: assortment.altImg,
+        // dough: assortment.dough,
+        // sizes: assortment.sizes,
+        // price: assortment.price,
+        // filterKey: assortment.filterKey,
+        assortmentKey: 1,
+      });
+    });
 
+    // Populate with initial data.
+    // store.put({ title: 'Quarry Memories', author: 'Fred', assortmentKey: 123456 });
+    // store.put({ title: 'Water Buffaloes', author: 'Fred', assortmentKey: 234567 });
+    // store.put({ title: 'Bedrock Nights', author: 'Barney', assortmentKey: 345678 });
+  };
+
+  request.onsuccess = function() {
+    db = request.result;
+  };
 
   const assortmentContainer = document.querySelector('.assortment__list');
 
