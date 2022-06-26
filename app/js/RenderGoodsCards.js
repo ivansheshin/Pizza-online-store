@@ -9,7 +9,7 @@ export default class RenderGoodsCards {
     this.data.map((item) => {
       this.container.insertAdjacentHTML('beforeend', `
         <div class="assortment__item" id="${item.id}"" data-category="${item.filterKey}">
-          <img src="${item.imgAddress}" width="260" alt="${item.altImg}">
+          <img src="${item.imgSrc}" width="260" alt="${item.altImg}">
           <h2 class="assortment__pizza-name">${item.title}</h2>
           <div class="pizza-information">
             <div class="pizza-information__type">
