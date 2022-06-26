@@ -43,7 +43,7 @@ const cssLoaders = (extra) => {
 module.exports = {
   context: path.resolve(__dirname, 'app'),
   mode: 'development',
-  entry: './js/main.js',
+  entry: './js/index.js',
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
