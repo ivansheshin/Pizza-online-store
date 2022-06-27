@@ -2,6 +2,7 @@ const defaultParams = {
   assortmentItemSelector: '.assortment__item',
   assortmentButtonSelector: '.assortment__btn',
   assortmentActiveButtonSelector: 'assortment__btn_active',
+  amountGoodsSelector: 'order__quantity',
 };
 
 export default class Basket {
@@ -35,7 +36,7 @@ export default class Basket {
 
     if (!isButton) return;
 
-    const { assortmentActiveButtonSelector } = this.params;
+    const { assortmentActiveButtonSelector, amountGoods } = this.params;
 
     assortmentButton.classList.toggle(assortmentActiveButtonSelector);
     const isAdded = assortmentButton.classList.contains(assortmentActiveButtonSelector);
