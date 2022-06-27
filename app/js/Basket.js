@@ -20,7 +20,7 @@ export default class Basket {
       assortmentButtonSelector,
     } = this.params;
 
-    this.selectedItems = new Set();
+    this.addedPizza = [];
 
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
 
@@ -41,7 +41,14 @@ export default class Basket {
     const isAdded = assortmentButton.classList.contains(assortmentActiveButtonSelector);
 
     Basket.changeButton(assortmentButton, isAdded);
-    this.addToBasket(assortmentItem);
+    if (isAdded) {
+      this.addToBasket(assortmentItem);
+    } else {
+      this.removeFromBasket(assortmentItem);
+    }
+
+    const idCollection = this.addedPizza.join(',');
+    localStorage.setItem('PizzaId', idCollection);
   }
 
   static changeButton(assortmentButton, isAdded) {
@@ -53,18 +60,11 @@ export default class Basket {
   }
 
   addToBasket(assortmentItem) {
-    const assortmentItemInfo = {
-      itemPrice: assortmentItem.querySelector('.assortment__price').textContent,
-      itemAmount: 'Нема пока',
-      itemType: assortmentItem.querySelector('.pizza-information__type-item_selected').textContent,
-      itemTitle: assortmentItem.querySelector('.assortment__pizza-name').textContent,
-    };
+    this.addedPizza.push(assortmentItem.id);
+  }
 
-    this.selectedItems.add({
-      itemPrice: 1,
-      itemAmount: 'Нема пока',
-      itemType: 2,
-      itemTitle: 3,
-    });
+  removeFromBasket(assortmentItem) {
+    const index = this.addedPizza.findIndex((item) => item === assortmentItem.id);
+    this.addedPizza.splice(index, 1);
   }
 }

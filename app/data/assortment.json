@@ -1,7 +1,7 @@
 [
   {
     "title": "Пепперони Фреш с перцем",
-    "imgAddress": "img/pepe-fresh-pepper.jpeg",
+    "imgSrc": "img/pepe-fresh-pepper.jpeg",
     "altImg": "Пепперони Фреш с перцем",
     "dough": ["традиционное", "тонкое"],
     "sizes": [26, 30, 40],
@@ -11,7 +11,7 @@
   },
   {
     "title": "Сырная пицца",
-    "imgAddress": "img/cheeze.jpg",
+    "imgSrc": "img/cheeze.jpg",
     "altImg": "Сырная пицца",
     "dough": ["традиционное"],
     "sizes": [26, 40],
@@ -21,7 +21,7 @@
   },
   {
     "title": "Цыпленок барбекю",
-    "imgAddress": "img/chicken-bbq.jpg",
+    "imgSrc": "img/chicken-bbq.jpg",
     "altImg": "Цыпленок барбекю",
     "dough": ["традиционное"],
     "sizes": [26, 40],
@@ -31,7 +31,7 @@
   },
   {
     "title": "Кисло-сладкий цыпленок",
-    "imgAddress": "img/sweet-sour-chicken.jpg",
+    "imgSrc": "img/sweet-sour-chicken.jpg",
     "altImg": "Кисло-сладкий цыпленок",
     "dough": ["тонкое"],
     "sizes": [26, 30, 40],
@@ -41,7 +41,7 @@
   },
   {
     "title": "Чизбургер пицца",
-    "imgAddress": "img/cheesburger.jpg",
+    "imgSrc": "img/cheesburger.jpg",
     "altImg": "Чизбургер пицца",
     "dough": ["традиционное", "тонкое"],
     "sizes": [26, 30, 40],
@@ -51,7 +51,7 @@
   },
   {
     "title": "Крейзи пепперони",
-    "imgAddress": "img/crazy-pepe.jpg",
+    "imgSrc": "img/crazy-pepe.jpg",
     "altImg": "Крейзи пепперони",
     "dough": ["традиционное"],
     "sizes": [30, 40],
@@ -61,7 +61,7 @@
   },
   {
     "title": "Пепперони",
-    "imgAddress": "img/pepe.jpg",
+    "imgSrc": "img/pepe.jpg",
     "altImg": "Пепперони",
     "dough": ["традиционное", "тонкое"],
     "sizes": [26, 30, 40],
@@ -71,7 +71,7 @@
   },
   {
     "title": "Маргарита",
-    "imgAddress": "img/margarita.jpg",
+    "imgSrc": "img/margarita.jpg",
     "altImg": "Маргарита",
     "dough": ["традиционное", "тонкое"],
     "sizes": [26, 30, 40],
@@ -81,7 +81,7 @@
   },
   {
     "title": "Четыре сезона",
-    "imgAddress": "img/4seasons.jpg",
+    "imgSrc": "img/4seasons.jpg",
     "altImg": "Четыре сезона",
     "dough": ["традиционное", "тонкое"],
     "sizes": [26, 30, 40],
@@ -91,7 +91,7 @@
   },
   {
     "title": "Овощи и грибы",
-    "imgAddress": "img/vegetables-and-mushrooms.jpg",
+    "imgSrc": "img/vegetables-and-mushrooms.jpg",
     "altImg": "Овощи и грибы",
     "dough": ["традиционное", "тонкое"],
     "sizes": [26, 30, 40],
@@ -101,7 +101,7 @@
   },
   {
     "title": "Карбонара",
-    "imgAddress": "img/carbonara.jpeg",
+    "imgSrc": "img/carbonara.jpeg",
     "altImg": "Карбонара",
     "dough": ["традиционное", "тонкое", "супертонкое"],
     "sizes": [26, 30, 40],
@@ -111,7 +111,7 @@
   },
   {
     "title": "Песто",
-    "imgAddress": "img/pesto.jpeg",
+    "imgSrc": "img/pesto.jpeg",
     "altImg": "Пицца Песто",
     "dough": ["традиционное"],
     "sizes": [26, 30],
@@ -121,7 +121,7 @@
   },
   {
     "title": "Арива",
-    "imgAddress": "img/ariva.jpeg",
+    "imgSrc": "img/ariva.jpeg",
     "altImg": "Пицца Арива",
     "dough": ["традиционное", "тонкое", "супертонкое"],
     "sizes": [26, 30, 40],
@@ -131,7 +131,7 @@
   },
   {
     "title": "Гавайская",
-    "imgAddress": "img/hawaii.jpg",
+    "imgSrc": "img/hawaii.jpg",
     "altImg": "Гавайская пицца",
     "dough": ["традиционное"],
     "sizes": [26, 40],
@@ -141,7 +141,7 @@
   },
   {
     "title": "Мексиканская",
-    "imgAddress": "img/mexican.jpg",
+    "imgSrc": "img/mexican.jpg",
     "altImg": "Мексиканская пицца",
     "dough": ["тонкое"],
     "sizes": [26, 30],
@@ -151,7 +151,7 @@
   },
   {
     "title": "Цыпленок ранчо",
-    "imgAddress": "img/pepe-fresh-pepper.jpeg",
+    "imgSrc": "img/pepe-fresh-pepper.jpeg",
     "altImg": "Пицца \"Цыпленок ранчо\"",
     "dough": ["традиционное"],
     "sizes": [26, 40],
