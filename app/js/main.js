@@ -1,5 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable func-names */
+import Basket from './Basket';
+
 export function createPizzaStore(assortment) {
   const request = indexedDB.open('PizzaStore');
   let db;
@@ -27,5 +29,7 @@ export function createPizzaStore(assortment) {
         assortmentKey: assortmentItem.id,
       });
     });
+
+    new Basket();
   };
 }
