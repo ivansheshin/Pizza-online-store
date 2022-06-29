@@ -20,7 +20,7 @@ export default class RenderGoodsCards {
             </div>
           </div>
           <div class="assortment__price-to-add">
-            <span class="assortment__price">от ${Object.values(item.price)[0]}</span>
+            <span class="assortment__price" id="${Object.values(item.price)[0]}">от ${Object.values(item.price)[0]}</span>
             <button class="assortment__btn">+Добавить</button>
           </div>
         </div>`);
