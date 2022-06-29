@@ -4,6 +4,7 @@ const defaultParams = {
   assortmentActiveButtonSelector: 'assortment__btn_active',
   amountSelector: '.order__amount',
   sumBasketSelector: '.order__price',
+  priceSelector: '.assortment__price',
 };
 
 export default class Basket {
@@ -21,30 +22,34 @@ export default class Basket {
       assortmentItemSelector,
       assortmentButtonSelector,
       amountSelector,
+      priceSelector,
     } = this.params;
 
     this.addedPizza = [];
+    this.sum = 0;
     this.amountGoodsItem = document.querySelector(amountSelector);
 
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
 
     assortmentItems.forEach((assortmentItem) => {
       const assortmentButton = assortmentItem.querySelector(assortmentButtonSelector);
-      assortmentItem.addEventListener('click', ({ target }) => this.clickHandler(target, assortmentButton, assortmentItem));
+      const priceElem = assortmentItem.querySelector(priceSelector);
+      const price = Number(priceElem.id);
+      assortmentItem.addEventListener('click', ({ target }) => this.clickHandler(target, assortmentButton, assortmentItem, price));
     });
   }
 
-  clickHandler(target, assortmentButton, assortmentItem) {
+  clickHandler(target, assortmentButton, assortmentItem, price) {
     const isButton = target === assortmentButton;
 
     if (!isButton) return;
 
-    this.switchAddBtnState(assortmentButton, assortmentItem);
+    this.switchAddBtnState(assortmentButton, assortmentItem, price);
     this.setInfoToLocalStorage();
     this.updateInfoBasket();
   }
 
-  switchAddBtnState(assortmentButton, assortmentItem) {
+  switchAddBtnState(assortmentButton, assortmentItem, price) {
     const { assortmentActiveButtonSelector } = this.params;
 
     assortmentButton.classList.toggle(assortmentActiveButtonSelector);
@@ -52,20 +57,22 @@ export default class Basket {
 
     if (isAdded) {
       assortmentButton.innerText = 'Удалить';
-      this.addToBasket(assortmentItem);
+      this.addToBasket(assortmentItem, price);
     } else {
       assortmentButton.innerText = '+Добавить';
-      this.removeFromBasket(assortmentItem);
+      this.removeFromBasket(assortmentItem, price);
     }
   }
 
-  addToBasket(assortmentItem) {
+  addToBasket(assortmentItem, price) {
     this.addedPizza.push(assortmentItem.id);
+    this.sum += price;
   }
 
-  removeFromBasket(assortmentItem) {
+  removeFromBasket(assortmentItem, price) {
     const index = this.addedPizza.findIndex((item) => item === assortmentItem.id);
     this.addedPizza.splice(index, 1);
+    this.sum -= price;
   }
 
   setInfoToLocalStorage() {
@@ -74,6 +81,11 @@ export default class Basket {
   }
 
   updateInfoBasket() {
+    const { sumBasketSelector } = this.params;
+    const sumBasket = document.querySelector(sumBasketSelector);
+
+
+    sumBasket.textContent = this.sum;
     const amountAddedPizza = this.addedPizza.length;
     this.amountGoodsItem.textContent = amountAddedPizza;
   }
