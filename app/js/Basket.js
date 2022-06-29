@@ -30,7 +30,7 @@ export default class Basket {
     this.amountGoodsItem = document.querySelector(amountSelector);
 
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
-
+    this.setInfoBasket();
     assortmentItems.forEach((assortmentItem) => {
       const assortmentButton = assortmentItem.querySelector(assortmentButtonSelector);
       const priceElem = assortmentItem.querySelector(priceSelector);
@@ -46,7 +46,7 @@ export default class Basket {
 
     this.switchAddBtnState(assortmentButton, assortmentItem, price);
     this.setInfoToLocalStorage();
-    this.updateInfoBasket();
+    this.setInfoBasket();
   }
 
   switchAddBtnState(assortmentButton, assortmentItem, price) {
@@ -78,14 +78,16 @@ export default class Basket {
   setInfoToLocalStorage() {
     const idCollection = this.addedPizza.join(',');
     localStorage.setItem('PizzaId', idCollection);
+    localStorage.setItem('BasketSum', this.sum);
+    localStorage.setItem('AmountGoods', this.addedPizza.length);
   }
 
-  updateInfoBasket() {
+  setInfoBasket() {
     const { sumBasketSelector } = this.params;
     const sumBasket = document.querySelector(sumBasketSelector);
 
-
-    sumBasket.textContent = this.sum;
+    const sum = localStorage.getItem('BasketSum');
+    sumBasket.textContent = sum;
     const amountAddedPizza = this.addedPizza.length;
     this.amountGoodsItem.textContent = amountAddedPizza;
   }
