@@ -13,18 +13,17 @@ export default class Basket {
       ...defaultParams,
       ...params,
     };
-
     this.init();
   }
 
   init() {
+    this.saveToDB();
     const {
       assortmentItemSelector,
       assortmentButtonSelector,
       amountSelector,
       priceSelector,
     } = this.params;
-
     this.addedPizza = [];
     this.sum = 0;
     this.amountGoodsItem = document.querySelector(amountSelector);
@@ -90,5 +89,29 @@ export default class Basket {
     sumBasket.textContent = sum;
     const amountAddedPizza = this.addedPizza.length;
     this.amountGoodsItem.textContent = amountAddedPizza;
+  }
+
+  saveToDB() {
+    const request = indexedDB.open('PizzaStore');
+    let db;
+
+    request.onupgradeneeded = function () {
+      const dataBase = request.result;
+      dataBase.createObjectStore('addedPizza', {
+        keyPath: 'added',
+      });
+    };
+
+    console.log(request);
+
+    request.onsuccess = function () {
+      db = request.result;
+      const transaction = db.transaction('addedPizza', 'readwrite');
+      const addedPizzaStore = transaction.objectStore('addedPizza');
+      addedPizzaStore.add({
+        id: 1,
+        added: 2,
+      });
+    };
   }
 }
