@@ -8,6 +8,7 @@ import Sort from 'Script/Sort';
 import SelectParameters from 'Script/SelectParameters';
 import SelectSize from 'Script/SelectSize';
 import { createPizzaStore } from 'Script/main';
+import Basket from 'Script/Basket';
 
 document.addEventListener('DOMContentLoaded', () => {
   createPizzaStore(assortment);
@@ -27,4 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
   new SelectParameters(pizzaInformationContainers);
 
   new SelectSize(assortment);
+
+  new Basket();
 });
