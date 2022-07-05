@@ -13,27 +13,34 @@ export default class Basket {
       ...defaultParams,
       ...params,
     };
+
     this.init();
   }
 
   init() {
-    this.saveToDB();
     const {
       assortmentItemSelector,
       assortmentButtonSelector,
-      amountSelector,
       priceSelector,
+      sumBasketSelector,
+      amountSelector,
     } = this.params;
+
     this.addedPizza = [];
     this.sum = 0;
+    this.addedState = [];
+
     this.amountGoodsItem = document.querySelector(amountSelector);
+    this.sumBasket = document.querySelector(sumBasketSelector);
+
+    this.setInfoBasket();
 
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
-    this.setInfoBasket();
     assortmentItems.forEach((assortmentItem) => {
       const assortmentButton = assortmentItem.querySelector(assortmentButtonSelector);
       const priceElem = assortmentItem.querySelector(priceSelector);
       const price = Number(priceElem.id);
+
       assortmentItem.addEventListener('click', ({ target }) => this.clickHandler(target, assortmentButton, assortmentItem, price));
     });
   }
@@ -82,36 +89,11 @@ export default class Basket {
   }
 
   setInfoBasket() {
-    const { sumBasketSelector } = this.params;
-    const sumBasket = document.querySelector(sumBasketSelector);
-
     const sum = localStorage.getItem('BasketSum');
-    sumBasket.textContent = sum;
-    const amountAddedPizza = this.addedPizza.length;
+    const amountAddedPizza = localStorage.getItem('AmountGoods');
+    if (!sum || !amountAddedPizza) return;
+
+    this.sumBasket.textContent = sum;
     this.amountGoodsItem.textContent = amountAddedPizza;
-  }
-
-  saveToDB() {
-    const request = indexedDB.open('PizzaStore');
-    let db;
-
-    request.onupgradeneeded = function () {
-      const dataBase = request.result;
-      dataBase.createObjectStore('addedPizza', {
-        keyPath: 'added',
-      });
-    };
-
-    console.log(request);
-
-    request.onsuccess = function () {
-      db = request.result;
-      const transaction = db.transaction('addedPizza', 'readwrite');
-      const addedPizzaStore = transaction.objectStore('addedPizza');
-      addedPizzaStore.add({
-        id: 1,
-        added: 2,
-      });
-    };
   }
 }
