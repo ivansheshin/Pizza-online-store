@@ -28,4 +28,8 @@ export function createPizzaStore(assortment) {
       });
     });
   };
+
+  request.onerror = function () {
+    console.error('DB error');
+  };
 }
