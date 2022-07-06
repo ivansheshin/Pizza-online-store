@@ -7,11 +7,11 @@ import Filter from 'Script/Filters';
 import Sort from 'Script/Sort';
 import SelectParameters from 'Script/SelectParameters';
 import SelectSize from 'Script/SelectSize';
-import { createPizzaStore } from 'Script/main';
+// import { createPizzaStore } from 'Script/main';
 import Basket from 'Script/Basket';
 
 document.addEventListener('DOMContentLoaded', () => {
-  createPizzaStore(assortment);
+  // createPizzaStore(assortment);
 
   const assortmentContainer = document.querySelector('.assortment__list');
 
@@ -29,5 +29,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   new SelectSize(assortment);
 
-  new Basket();
+  new Basket(assortment);
 });
