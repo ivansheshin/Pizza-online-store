@@ -8,11 +8,14 @@ const defaultParams = {
 };
 
 export default class Basket {
-  constructor(params) {
+  constructor(data, params) {
     this.params = {
       ...defaultParams,
       ...params,
     };
+    this.data = data;
+
+    console.log(this.data);
 
     this.init();
   }
@@ -26,14 +29,15 @@ export default class Basket {
       amountSelector,
     } = this.params;
 
-    this.addedPizza = [];
-    this.sum = 0;
-    this.addedState = [];
+    this.addedPizzaInfo = {
+      id: {},
+      sum: 0,
+    };
 
     this.amountGoodsItem = document.querySelector(amountSelector);
     this.sumBasket = document.querySelector(sumBasketSelector);
 
-    this.setInfoBasket();
+    this.setInfoFromLocalStorage();
 
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
     assortmentItems.forEach((assortmentItem) => {
@@ -47,12 +51,11 @@ export default class Basket {
 
   clickHandler(target, assortmentButton, assortmentItem, price) {
     const isButton = target === assortmentButton;
-
     if (!isButton) return;
 
     this.switchAddBtnState(assortmentButton, assortmentItem, price);
     this.setInfoToLocalStorage();
-    this.setInfoBasket();
+    this.setInfoFromLocalStorage();
   }
 
   switchAddBtnState(assortmentButton, assortmentItem, price) {
@@ -71,29 +74,27 @@ export default class Basket {
   }
 
   addToBasket(assortmentItem, price) {
-    this.addedPizza.push(assortmentItem.id);
-    this.sum += price;
+    this.addedPizzaInfo.id[assortmentItem.id] = true;
+    this.addedPizzaInfo.sum += price;
   }
 
   removeFromBasket(assortmentItem, price) {
-    const index = this.addedPizza.findIndex((item) => item === assortmentItem.id);
-    this.addedPizza.splice(index, 1);
-    this.sum -= price;
+    delete this.addedPizzaInfo.id[assortmentItem.id];
+    this.addedPizzaInfo.sum -= price;
   }
 
   setInfoToLocalStorage() {
-    const idCollection = this.addedPizza.join(',');
-    localStorage.setItem('PizzaId', idCollection);
-    localStorage.setItem('BasketSum', this.sum);
-    localStorage.setItem('AmountGoods', this.addedPizza.length);
+    const modifiedObject = JSON.stringify(this.addedPizzaInfo);
+    localStorage.setItem('addedPizzaInfo', modifiedObject);
   }
 
-  setInfoBasket() {
-    const sum = localStorage.getItem('BasketSum');
-    const amountAddedPizza = localStorage.getItem('AmountGoods');
-    if (!sum || !amountAddedPizza) return;
+  setInfoFromLocalStorage() {
+    const addedPizzaInfoString = localStorage.getItem('addedPizzaInfo');
+    if (!addedPizzaInfoString) return;
 
-    this.sumBasket.textContent = sum;
-    this.amountGoodsItem.textContent = amountAddedPizza;
+    const addedPizzaInfoObject = JSON.parse(addedPizzaInfoString);
+
+    this.sumBasket.textContent = addedPizzaInfoObject.sum;
+    this.amountGoodsItem.textContent = addedPizzaInfoObject.id.length;
   }
 }
