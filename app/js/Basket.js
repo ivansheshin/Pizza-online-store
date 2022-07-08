@@ -38,14 +38,14 @@ export default class Basket {
     this.sumBasket = document.querySelector(sumBasketSelector);
 
     const addedStringIdCollection = localStorage.getItem('idOfAddedGoods');
-    const arrayOfId = addedStringIdCollection.split(',');
+    const arrayOfId = addedStringIdCollection?.split(',');
     console.log(arrayOfId);
     this.setInfoFromLocalStorage();
 
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
     assortmentItems.forEach((assortmentItem) => {
       const assortmentButton = assortmentItem.querySelector(assortmentButtonSelector);
-      this.arrayOfId?.forEach((addedPizzaId) => {
+      arrayOfId?.forEach((addedPizzaId) => {
         const isAdded = addedPizzaId === assortmentItem.id;
 
         if (isAdded) {
@@ -103,12 +103,16 @@ export default class Basket {
 
   setInfoFromLocalStorage() {
     const amountAddedPizza = localStorage.getItem('amountGoods');
-    const sum = localStorage.getItem('sum');
+    const sum = Number(localStorage.getItem('sum'));
 
-    if (!sum || !amountAddedPizza) return;
-    this.sum = sum;
-    this.sumBasket.textContent = sum;
-
-    this.amountGoodsItem.textContent = amountAddedPizza;
+    if (!sum || !amountAddedPizza) {
+      this.sum = 0;
+      this.sumBasket.textContent = 0;
+      this.amountGoodsItem.textContent = 0;
+    } else {
+      this.sum = sum;
+      this.sumBasket.textContent = sum;
+      this.amountGoodsItem.textContent = amountAddedPizza;
+    }
   }
 }
