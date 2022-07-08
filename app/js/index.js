@@ -29,5 +29,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   new SelectSize(assortment);
 
-  new Basket(assortment);
+  new Basket();
 });
