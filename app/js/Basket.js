@@ -39,7 +39,6 @@ export default class Basket {
 
     const addedStringIdCollection = localStorage.getItem('idOfAddedGoods');
     const arrayOfId = addedStringIdCollection?.split(',');
-    console.log(arrayOfId);
     this.setInfoFromLocalStorage();
 
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
