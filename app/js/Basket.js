@@ -13,7 +13,6 @@ export default class Basket {
       ...defaultParams,
       ...params,
     };
-
     this.init();
   }
 
@@ -26,9 +25,7 @@ export default class Basket {
       amountSelector,
     } = this.params;
 
-    this.goodsInfoInBasket = {
-      id: {},
-    };
+    this.goodsInfoInBasket = new Set();
 
     this.idOfAddedGoods = [];
     this.sum = 0;
@@ -38,59 +35,57 @@ export default class Basket {
     this.sumBasket = document.querySelector(sumBasketSelector);
 
     const addedStringIdCollection = localStorage.getItem('idOfAddedGoods');
-    const arrayOfId = addedStringIdCollection?.split(',');
+    this.arrayOfId = addedStringIdCollection?.split(',');
     this.setInfoFromLocalStorage();
 
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
+
     assortmentItems.forEach((assortmentItem) => {
       const assortmentButton = assortmentItem.querySelector(assortmentButtonSelector);
-      arrayOfId?.forEach((addedPizzaId) => {
-        const isAdded = addedPizzaId === assortmentItem.id;
-
-        if (isAdded) {
-          assortmentButton.classList.add(this.params.assortmentActiveButtonSelector);
-          assortmentButton.innerText = 'Удалить';
-        }
-      });
+      this.checkAddedPizza(assortmentItem, assortmentButton);
 
       const priceElem = assortmentItem.querySelector(priceSelector);
-      const price = Number(priceElem.id);
+      this.price = Number(priceElem.id);
 
-      assortmentItem.addEventListener('click', ({ target }) => this.clickHandler(target, assortmentButton, assortmentItem, price));
+      assortmentItem.addEventListener('click', ({ target }) => this.clickHandler(target, assortmentButton, assortmentItem));
     });
   }
 
-  clickHandler(target, assortmentButton, assortmentItem, price) {
+  clickHandler(target, assortmentButton, assortmentItem) {
     const isButton = target === assortmentButton;
     if (!isButton) return;
 
-    this.switchAddBtnState(assortmentButton, assortmentItem, price);
+    this.switchAddBtnState(assortmentButton, assortmentItem, this.price);
     this.setInfoToLocalStorage();
     this.setInfoFromLocalStorage();
   }
 
-  switchAddBtnState(assortmentButton, assortmentItem, price) {
+  switchAddBtnState(assortmentButton, assortmentItem) {
     assortmentButton.classList.toggle(this.params.assortmentActiveButtonSelector);
     const isAdded = assortmentButton.classList.contains(this.params.assortmentActiveButtonSelector);
 
     if (isAdded) {
       assortmentButton.innerText = 'Удалить';
-      this.addToBasket(assortmentItem, price);
+      this.addToBasket(assortmentItem, this.price);
     } else {
       assortmentButton.innerText = '+Добавить';
-      this.removeFromBasket(assortmentItem, price);
+      this.removeFromBasket(assortmentItem, this.price);
     }
   }
 
-  addToBasket(assortmentItem, price) {
+  addToBasket(assortmentItem) {
     this.idOfAddedGoods.push(assortmentItem.id);
-    this.sum += price;
+    // Добавлять свой объект с данными пиццы
+    this.goodsInfoInBasket.add(assortmentItem);
+    this.sum += this.price;
   }
 
-  removeFromBasket(assortmentItem, price) {
+  removeFromBasket(assortmentItem) {
     const index = this.idOfAddedGoods.findIndex((item) => item === assortmentItem.id);
     this.idOfAddedGoods.splice(index, 1);
-    this.sum -= price;
+    // Добавлять свой объект с данными пиццы
+    this.goodsInfoInBasket.delete(assortmentItem);
+    this.sum -= this.price;
   }
 
   setInfoToLocalStorage() {
@@ -113,5 +108,16 @@ export default class Basket {
       this.sumBasket.textContent = sum;
       this.amountGoodsItem.textContent = amountAddedPizza;
     }
+  }
+
+  checkAddedPizza(assortmentItem, assortmentButton) {
+    this.arrayOfId?.forEach((addedPizzaId) => {
+      const isAdded = addedPizzaId === assortmentItem.id;
+
+      if (isAdded) {
+        assortmentButton.classList.add(this.params.assortmentActiveButtonSelector);
+        assortmentButton.innerText = 'Удалить';
+      }
+    });
   }
 }
