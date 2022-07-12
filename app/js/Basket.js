@@ -33,7 +33,7 @@ export default class Basket {
     this.amountGoodsItem = document.querySelector(amountSelector);
     this.sumBasket = document.querySelector(sumBasketSelector);
 
-    const addedStringIdCollection = localStorage.getItem('idOfAddedGoods');
+    const addedStringIdCollection = localStorage.getItem('idCollection');
     this.arrayOfId = addedStringIdCollection?.split(',');
     this.setInfoFromLocalStorage();
 
@@ -74,6 +74,7 @@ export default class Basket {
 
   addToBasket(assortmentItem) {
     this.idOfAddedGoods.push(assortmentItem.id);
+    console.log(this.idOfAddedGoods);
     // Добавлять свой объект с данными пиццы
     this.sum += this.price;
   }
@@ -81,24 +82,25 @@ export default class Basket {
   removeFromBasket(assortmentItem) {
     const index = this.idOfAddedGoods.findIndex((item) => item === assortmentItem.id);
     this.idOfAddedGoods.splice(index, 1);
+    console.log(this.idOfAddedGoods);
     this.sum -= this.price;
   }
 
   setInfoToLocalStorage() {
     // Хуйня какая-то багованая
     const idCollection = this.idOfAddedGoods.join(',');
-    localStorage.setItem('idOfAddedGoods', idCollection);
+    localStorage.setItem('idCollection', idCollection);
     localStorage.setItem('sum', this.sum);
     localStorage.setItem('amountGoods', this.idOfAddedGoods.length);
+    console.log(this.idOfAddedGoods);
   }
 
   setInfoFromLocalStorage() {
     const amountAddedPizza = localStorage.getItem('amountGoods');
     const sum = Number(localStorage.getItem('sum'));
     // TODO пройтись по айдишникам и добавить в массив объектов
-    const idCollectionString = localStorage.getItem('idOfAddedGoods');
-    console.log(idCollectionString);
-    if (!sum || !amountAddedPizza) {
+    const idCollectionString = localStorage.getItem('idCollection');
+    if (!sum && !amountAddedPizza && !idCollectionString) {
       this.sum = 0;
       this.sumBasket.textContent = 0;
       this.amountGoodsItem.textContent = 0;
