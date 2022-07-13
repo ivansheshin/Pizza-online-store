@@ -100,11 +100,12 @@ export default class Basket {
 
   initBtnState(assortmentItem, assortmentButton) {
     const idCollectionString = localStorage.getItem('PizzaId');
-    const idCollectionArray = idCollectionString.split(',');
-    const isAddedId = idCollectionArray.includes(assortmentItem.id);
+    const idCollectionArray = idCollectionString?.split(',');
+    const isAddedId = idCollectionArray?.includes(assortmentItem.id);
 
     if (isAddedId) {
       assortmentButton.classList.add(this.params.assortmentActiveButtonSelector);
+      assortmentButton.innerText = 'Удалить';
     }
   }
 }
