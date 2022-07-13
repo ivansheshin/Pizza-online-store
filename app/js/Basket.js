@@ -93,6 +93,7 @@ export default class Basket {
     const amountAddedPizza = localStorage.getItem('AmountGoods');
     if (!sum || !amountAddedPizza) return;
 
+    this.sum = Number(sum);
     this.sumBasket.textContent = sum;
     this.amountGoodsItem.textContent = amountAddedPizza;
   }
