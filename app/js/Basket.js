@@ -38,6 +38,8 @@ export default class Basket {
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
     assortmentItems.forEach((assortmentItem) => {
       const assortmentButton = assortmentItem.querySelector(assortmentButtonSelector);
+      this.initBtnState(assortmentItem, assortmentButton);
+
       const priceElem = assortmentItem.querySelector(priceSelector);
       const price = Number(priceElem.id);
 
@@ -96,5 +98,16 @@ export default class Basket {
     this.sum = Number(sum);
     this.sumBasket.textContent = sum;
     this.amountGoodsItem.textContent = amountAddedPizza;
+  }
+
+  initBtnState(assortmentItem, assortmentButton) {
+    const { assortmentActiveButtonSelector } = this.params;
+
+    const idCollectionString = localStorage.getItem('PizzaId');
+    const idCollectionArray = idCollectionString.split(',');
+    const qq = idCollectionArray.includes(assortmentItem.id);
+    if (qq) {
+      assortmentButton.classList.add(assortmentActiveButtonSelector);
+    }
   }
 }
