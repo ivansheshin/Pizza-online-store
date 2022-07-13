@@ -58,10 +58,8 @@ export default class Basket {
   }
 
   switchAddBtnState(assortmentButton, assortmentItem, price) {
-    const { assortmentActiveButtonSelector } = this.params;
-
-    assortmentButton.classList.toggle(assortmentActiveButtonSelector);
-    const isAdded = assortmentButton.classList.contains(assortmentActiveButtonSelector);
+    assortmentButton.classList.toggle(this.params.assortmentActiveButtonSelector);
+    const isAdded = assortmentButton.classList.contains(this.params.assortmentActiveButtonSelector);
 
     if (isAdded) {
       assortmentButton.innerText = 'Удалить';
@@ -101,13 +99,12 @@ export default class Basket {
   }
 
   initBtnState(assortmentItem, assortmentButton) {
-    const { assortmentActiveButtonSelector } = this.params;
-
     const idCollectionString = localStorage.getItem('PizzaId');
     const idCollectionArray = idCollectionString.split(',');
-    const qq = idCollectionArray.includes(assortmentItem.id);
-    if (qq) {
-      assortmentButton.classList.add(assortmentActiveButtonSelector);
+    const isAddedId = idCollectionArray.includes(assortmentItem.id);
+
+    if (isAddedId) {
+      assortmentButton.classList.add(this.params.assortmentActiveButtonSelector);
     }
   }
 }
