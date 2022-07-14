@@ -26,14 +26,21 @@ export default class Basket {
       amountSelector,
     } = this.params;
 
+    const initPizzaId = localStorage.getItem('PizzaId');
+
     this.addedPizza = [];
+
+    if (initPizzaId) {
+      const initPizzaIdArray = initPizzaId.split(',');
+      this.addedPizza = this.addedPizza.concat(initPizzaIdArray);
+    }
+
     this.sum = 0;
-    this.addedState = [];
 
     this.amountGoodsItem = document.querySelector(amountSelector);
     this.sumBasket = document.querySelector(sumBasketSelector);
 
-    this.setInfoBasket();
+    this.setInfoFromLocalStorage();
 
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
     assortmentItems.forEach((assortmentItem) => {
@@ -54,7 +61,7 @@ export default class Basket {
 
     this.switchAddBtnState(assortmentButton, assortmentItem, price);
     this.setInfoToLocalStorage();
-    this.setInfoBasket();
+    this.setInfoFromLocalStorage();
   }
 
   switchAddBtnState(assortmentButton, assortmentItem, price) {
@@ -88,7 +95,7 @@ export default class Basket {
     localStorage.setItem('AmountGoods', this.addedPizza.length);
   }
 
-  setInfoBasket() {
+  setInfoFromLocalStorage() {
     const sum = localStorage.getItem('BasketSum');
     const amountAddedPizza = localStorage.getItem('AmountGoods');
     if (!sum || !amountAddedPizza) return;
