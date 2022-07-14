@@ -26,21 +26,15 @@ export default class Basket {
       amountSelector,
     } = this.params;
 
-    const initPizzaId = localStorage.getItem('PizzaId');
-
-    this.addedPizza = [];
-
-    if (initPizzaId) {
-      const initPizzaIdArray = initPizzaId.split(',');
-      this.addedPizza = this.addedPizza.concat(initPizzaIdArray);
-    }
-
+    this.idCollection = [];
     this.sum = 0;
+
 
     this.amountGoodsItem = document.querySelector(amountSelector);
     this.sumBasket = document.querySelector(sumBasketSelector);
 
-    this.setInfoFromLocalStorage();
+    this.setIdCollectionFromStorage();
+    this.setBasketInfoFromStorage();
 
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
     assortmentItems.forEach((assortmentItem) => {
@@ -60,8 +54,8 @@ export default class Basket {
     if (!isButton) return;
 
     this.switchAddBtnState(assortmentButton, assortmentItem, price);
-    this.setInfoToLocalStorage();
-    this.setInfoFromLocalStorage();
+    this.setBasketInfoToStorage();
+    this.setBasketInfoFromStorage();
   }
 
   switchAddBtnState(assortmentButton, assortmentItem, price) {
@@ -78,26 +72,26 @@ export default class Basket {
   }
 
   addToBasket(assortmentItem, price) {
-    this.addedPizza.push(assortmentItem.id);
+    this.idCollection.push(assortmentItem.id);
     this.sum += price;
   }
 
   removeFromBasket(assortmentItem, price) {
-    const index = this.addedPizza.findIndex((item) => item === assortmentItem.id);
-    this.addedPizza.splice(index, 1);
+    const index = this.idCollection.findIndex((item) => item === assortmentItem.id);
+    this.idCollection.splice(index, 1);
     this.sum -= price;
   }
 
-  setInfoToLocalStorage() {
-    const idCollection = this.addedPizza.join(',');
-    localStorage.setItem('PizzaId', idCollection);
-    localStorage.setItem('BasketSum', this.sum);
-    localStorage.setItem('AmountGoods', this.addedPizza.length);
+  setBasketInfoToStorage() {
+    const idCollectionString = this.idCollection.join(',');
+    localStorage.setItem('idCollection', idCollectionString);
+    localStorage.setItem('basketSum', this.sum);
+    localStorage.setItem('amountGoods', this.idCollection.length);
   }
 
-  setInfoFromLocalStorage() {
-    const sum = localStorage.getItem('BasketSum');
-    const amountAddedPizza = localStorage.getItem('AmountGoods');
+  setBasketInfoFromStorage() {
+    const sum = localStorage.getItem('basketSum');
+    const amountAddedPizza = localStorage.getItem('amountGoods');
     if (!sum || !amountAddedPizza) return;
 
     this.sum = Number(sum);
@@ -106,13 +100,21 @@ export default class Basket {
   }
 
   initBtnState(assortmentItem, assortmentButton) {
-    const idCollectionString = localStorage.getItem('PizzaId');
+    const idCollectionString = localStorage.getItem('idCollection');
     const idCollectionArray = idCollectionString?.split(',');
     const isAddedId = idCollectionArray?.includes(assortmentItem.id);
 
     if (isAddedId) {
       assortmentButton.classList.add(this.params.assortmentActiveButtonSelector);
       assortmentButton.innerText = 'Удалить';
+    }
+  }
+
+  setIdCollectionFromStorage() {
+    const initPizzaId = localStorage.getItem('idCollection');
+    if (initPizzaId) {
+      const initPizzaIdArray = initPizzaId.split(',');
+      this.idCollection = this.idCollection.concat(initPizzaIdArray);
     }
   }
 }
