@@ -5,6 +5,9 @@ const defaultParams = {
   amountSelector: '.order__amount',
   sumBasketSelector: '.order__price',
   priceSelector: '.assortment__price',
+  pizzaNameSelector: '.assortment__pizza-name',
+  pizzaSelectedTypeSelector: '.pizza-information__type-item_selected',
+  pizzaSelectedSizeSelector: '.pizza-information__size-item_selected',
 };
 
 export default class Basket {
@@ -28,7 +31,7 @@ export default class Basket {
 
     this.idCollection = [];
     this.sum = 0;
-
+    this.puzzaCollection = [];
 
     this.amountGoodsItem = document.querySelector(amountSelector);
     this.sumBasket = document.querySelector(sumBasketSelector);
@@ -55,7 +58,7 @@ export default class Basket {
 
     this.switchAddBtnState(assortmentButton, assortmentItem, price);
     this.setBasketInfoToStorage();
-    this.setBasketInfoFromStorage();
+    this.setBasketInfoFromStorage(assortmentItem);
   }
 
   switchAddBtnState(assortmentButton, assortmentItem, price) {
@@ -89,7 +92,7 @@ export default class Basket {
     localStorage.setItem('amountGoods', this.idCollection.length);
   }
 
-  setBasketInfoFromStorage() {
+  setBasketInfoFromStorage(assortmentItem = null) {
     const sum = localStorage.getItem('basketSum');
     const amountAddedPizza = localStorage.getItem('amountGoods');
     if (!sum || !amountAddedPizza) return;
@@ -97,6 +100,9 @@ export default class Basket {
     this.sum = Number(sum);
     this.sumBasket.textContent = sum;
     this.amountGoodsItem.textContent = amountAddedPizza;
+
+    const idCollectionString = localStorage.getItem('idCollection');
+    this.savePizzaCollectionToStorage(assortmentItem, idCollectionString);
   }
 
   initBtnState(assortmentItem, assortmentButton) {
@@ -116,5 +122,11 @@ export default class Basket {
       const initPizzaIdArray = initPizzaId.split(',');
       this.idCollection = this.idCollection.concat(initPizzaIdArray);
     }
+  }
+
+  savePizzaCollectionToStorage(assortmentItem, idCollectionString) {
+    const {  } = this.params;
+    const hui = localStorage.getItem('idCollection');
+    console.log(assortmentItem);
   }
 }
