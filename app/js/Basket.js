@@ -139,3 +139,5 @@ export default class Basket {
     }
   }
 }
+
+// TODO ноебходимо сохранить размер пиццы и вид теста https://i.imgur.com/DJ7uVl2.png, мб объединить все в одно
