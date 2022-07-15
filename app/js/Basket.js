@@ -32,6 +32,7 @@ export default class Basket {
     this.idCollection = [];
     this.sum = 0;
     this.puzzaCollection = [];
+    this.addedPizza = [];
 
     this.amountGoodsItem = document.querySelector(amountSelector);
     this.sumBasket = document.querySelector(sumBasketSelector);
@@ -45,44 +46,45 @@ export default class Basket {
       this.initBtnState(assortmentItem, assortmentButton);
 
       const priceElem = assortmentItem.querySelector(priceSelector);
-      const price = Number(priceElem.id);
+      this.price = Number(priceElem.id);
 
-      assortmentItem.addEventListener('click', ({ target }) => this.clickHandler(target, assortmentButton, assortmentItem, price));
+      assortmentItem.addEventListener('click', ({ target }) => this.clickHandler(target, assortmentButton, assortmentItem));
+      this.savePizzaCollectionToStorage(assortmentItem);
     });
   }
 
-  clickHandler(target, assortmentButton, assortmentItem, price) {
+  clickHandler(target, assortmentButton, assortmentItem) {
     const isButton = target === assortmentButton;
 
     if (!isButton) return;
 
-    this.switchAddBtnState(assortmentButton, assortmentItem, price);
+    this.switchAddBtnState(assortmentButton, assortmentItem);
     this.setBasketInfoToStorage();
     this.setBasketInfoFromStorage(assortmentItem);
   }
 
-  switchAddBtnState(assortmentButton, assortmentItem, price) {
+  switchAddBtnState(assortmentButton, assortmentItem) {
     assortmentButton.classList.toggle(this.params.assortmentActiveButtonSelector);
     const isAdded = assortmentButton.classList.contains(this.params.assortmentActiveButtonSelector);
 
     if (isAdded) {
       assortmentButton.innerText = 'Удалить';
-      this.addToBasket(assortmentItem, price);
+      this.addToBasket(assortmentItem);
     } else {
       assortmentButton.innerText = '+Добавить';
-      this.removeFromBasket(assortmentItem, price);
+      this.removeFromBasket(assortmentItem);
     }
   }
 
-  addToBasket(assortmentItem, price) {
+  addToBasket(assortmentItem) {
     this.idCollection.push(assortmentItem.id);
-    this.sum += price;
+    this.sum += this.price;
   }
 
-  removeFromBasket(assortmentItem, price) {
+  removeFromBasket(assortmentItem) {
     const index = this.idCollection.findIndex((item) => item === assortmentItem.id);
     this.idCollection.splice(index, 1);
-    this.sum -= price;
+    this.sum -= this.price;
   }
 
   setBasketInfoToStorage() {
@@ -100,9 +102,6 @@ export default class Basket {
     this.sum = Number(sum);
     this.sumBasket.textContent = sum;
     this.amountGoodsItem.textContent = amountAddedPizza;
-
-    const idCollectionString = localStorage.getItem('idCollection');
-    this.savePizzaCollectionToStorage(assortmentItem, idCollectionString);
   }
 
   initBtnState(assortmentItem, assortmentButton) {
@@ -124,9 +123,19 @@ export default class Basket {
     }
   }
 
-  savePizzaCollectionToStorage(assortmentItem, idCollectionString) {
-    const {  } = this.params;
-    const hui = localStorage.getItem('idCollection');
-    console.log(assortmentItem);
+  savePizzaCollectionToStorage(assortmentItem) {
+    const { pizzaNameSelector, pizzaSelectedTypeSelector, pizzaSelectedSizeSelector } = this.params;
+    const isAdded = this.idCollection?.includes(assortmentItem.id);
+
+    if (isAdded) {
+      const pizzaName = assortmentItem.querySelector(pizzaNameSelector);
+      const pizzaSelectedSize = assortmentItem.querySelector(pizzaSelectedSizeSelector);
+      const pizzaSelectedType = assortmentItem.querySelector(pizzaSelectedTypeSelector);
+      this.addedPizza.push({
+        name: pizzaName.textContent,
+        size: pizzaSelectedSize.textContent,
+        type: pizzaSelectedType.textContent,
+      });
+    }
   }
 }
