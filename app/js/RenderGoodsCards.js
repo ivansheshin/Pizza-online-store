@@ -13,10 +13,10 @@ export default class RenderGoodsCards {
           <h2 class="assortment__pizza-name">${item.title}</h2>
           <div class="pizza-information">
             <div class="pizza-information__type">
-                  ${item.dough.map((typeItem) => `<span class="pizza-information__type-item">${typeItem}</span>`).join('')}
+                  ${item.dough.map((typeItem) => `<span class="pizza-information__type-item" data-type='${typeItem}'>${typeItem}</span>`).join('')}
             </div>
             <div class="pizza-information__size">
-                   ${item.sizes.map((sizeItem) => `<span class="pizza-information__size-item">${sizeItem}</span>`).join('')}
+                   ${item.sizes.map((sizeItem) => `<span class="pizza-information__size-item" data-size='${sizeItem}'>${sizeItem}</span>`).join('')}
             </div>
           </div>
           <div class="assortment__price-to-add">
