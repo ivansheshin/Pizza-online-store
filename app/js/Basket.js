@@ -77,24 +77,35 @@ export default class Basket {
   }
 
   addToBasket(assortmentItem) {
-    this.idCollection.push(assortmentItem.id);
+    const { pizzaNameSelector, pizzaSelectedTypeSelector, pizzaSelectedSizeSelector } = this.params;
+
+    const pizzaName = assortmentItem.querySelector(pizzaNameSelector);
+    const pizzaSelectedSize = assortmentItem.querySelector(pizzaSelectedSizeSelector);
+    const pizzaSelectedType = assortmentItem.querySelector(pizzaSelectedTypeSelector);
+
+    this.idCollection.push({
+      name: pizzaName.textContent,
+      size: pizzaSelectedSize.textContent,
+      type: pizzaSelectedType.textContent,
+      id: assortmentItem.id,
+    });
     this.sum += this.price;
   }
 
   removeFromBasket(assortmentItem) {
-    const index = this.idCollection.findIndex((item) => item === assortmentItem.id);
+    const index = this.idCollection.findIndex((item) => item.id === assortmentItem.id);
     this.idCollection.splice(index, 1);
     this.sum -= this.price;
   }
 
   setBasketInfoToStorage() {
-    const idCollectionString = this.idCollection.join(',');
+    const idCollectionString = JSON.stringify(this.idCollection);
     localStorage.setItem('idCollection', idCollectionString);
     localStorage.setItem('basketSum', this.sum);
     localStorage.setItem('amountGoods', this.idCollection.length);
   }
 
-  setBasketInfoFromStorage(assortmentItem = null) {
+  setBasketInfoFromStorage() {
     const sum = localStorage.getItem('basketSum');
     const amountAddedPizza = localStorage.getItem('amountGoods');
     if (!sum || !amountAddedPizza) return;
@@ -106,8 +117,13 @@ export default class Basket {
 
   initBtnState(assortmentItem, assortmentButton) {
     const idCollectionString = localStorage.getItem('idCollection');
-    const idCollectionArray = idCollectionString?.split(',');
-    const isAddedId = idCollectionArray?.includes(assortmentItem.id);
+    const idCollectionArray = JSON.parse(idCollectionString);
+    const idArray = [];
+    idCollectionArray?.forEach((pizzaItem) => {
+      idArray.push(pizzaItem.id);
+    });
+
+    const isAddedId = idArray.includes(assortmentItem.id);
 
     if (isAddedId) {
       assortmentButton.classList.add(this.params.assortmentActiveButtonSelector);
@@ -135,7 +151,10 @@ export default class Basket {
         name: pizzaName.textContent,
         size: pizzaSelectedSize.textContent,
         type: pizzaSelectedType.textContent,
+        id: assortmentItem.id,
       });
+
+      console.log(this.addedPizza);
     }
   }
 }
