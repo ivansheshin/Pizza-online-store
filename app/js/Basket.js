@@ -29,27 +29,33 @@ export default class Basket {
       amountSelector,
     } = this.params;
 
-    this.idCollection = [];
+    this.pizzaCollection = [];
     this.sum = 0;
-    this.puzzaCollection = [];
-    this.addedPizza = [];
 
     this.amountGoodsItem = document.querySelector(amountSelector);
     this.sumBasket = document.querySelector(sumBasketSelector);
 
+    this.pizzaCollectionString = localStorage.getItem('pizzaCollection');
+    this.pizzaCollectionArr = JSON.parse(this.pizzaCollectionString);
+
     this.setIdCollectionFromStorage();
     this.setBasketInfoFromStorage();
-
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
     assortmentItems.forEach((assortmentItem) => {
+      const { pizzaNameSelector, pizzaSelectedTypeSelector, pizzaSelectedSizeSelector } = this.params;
+
+      const pizzaName = assortmentItem.querySelector(this.params.pizzaNameSelector);
+      const pizzaSelectedSize = assortmentItem.querySelector(this.params.pizzaSelectedSizeSelector);
+      const pizzaSelectedType = assortmentItem.querySelector(this.params.pizzaSelectedTypeSelector);
+
       const assortmentButton = assortmentItem.querySelector(assortmentButtonSelector);
-      this.initBtnState(assortmentItem, assortmentButton);
+      this.initBtnsState(assortmentItem, assortmentButton);
 
       const priceElem = assortmentItem.querySelector(priceSelector);
       this.price = Number(priceElem.id);
 
       assortmentItem.addEventListener('click', ({ target }) => this.clickHandler(target, assortmentButton, assortmentItem));
-      this.savePizzaCollectionToStorage(assortmentItem);
+      // this.savePizzaCollectionToStorage(assortmentItem);
     });
   }
 
@@ -83,26 +89,27 @@ export default class Basket {
     const pizzaSelectedSize = assortmentItem.querySelector(pizzaSelectedSizeSelector);
     const pizzaSelectedType = assortmentItem.querySelector(pizzaSelectedTypeSelector);
 
-    this.idCollection.push({
+    this.pizzaCollection.push({
       name: pizzaName.textContent,
       size: pizzaSelectedSize.textContent,
       type: pizzaSelectedType.textContent,
       id: assortmentItem.id,
     });
+
     this.sum += this.price;
   }
 
   removeFromBasket(assortmentItem) {
-    const index = this.idCollection.findIndex((item) => item.id === assortmentItem.id);
-    this.idCollection.splice(index, 1);
+    const index = this.pizzaCollection.findIndex((item) => item.id === assortmentItem.id);
+    this.pizzaCollection.splice(index, 1);
     this.sum -= this.price;
   }
 
   setBasketInfoToStorage() {
-    const idCollectionString = JSON.stringify(this.idCollection);
-    localStorage.setItem('idCollection', idCollectionString);
+    const idCollectionString = JSON.stringify(this.pizzaCollection);
+    localStorage.setItem('pizzaCollection', idCollectionString);
     localStorage.setItem('basketSum', this.sum);
-    localStorage.setItem('amountGoods', this.idCollection.length);
+    localStorage.setItem('amountGoods', this.pizzaCollection.length);
   }
 
   setBasketInfoFromStorage() {
@@ -115,13 +122,18 @@ export default class Basket {
     this.amountGoodsItem.textContent = amountAddedPizza;
   }
 
-  initBtnState(assortmentItem, assortmentButton) {
-    const idCollectionString = localStorage.getItem('idCollection');
-    const idCollectionArray = JSON.parse(idCollectionString);
+  initBtnsState(assortmentItem, assortmentButton) {
+    if (!this.pizzaCollectionString) return;
     const idArray = [];
-    idCollectionArray?.forEach((pizzaItem) => {
+    const sizeArray = [];
+    const typeArray = [];
+
+    this.pizzaCollectionArr.forEach((pizzaItem) => {
       idArray.push(pizzaItem.id);
+      sizeArray.push(pizzaItem.size);
     });
+
+    console.log(sizeArray);
 
     const isAddedId = idArray.includes(assortmentItem.id);
 
@@ -132,29 +144,8 @@ export default class Basket {
   }
 
   setIdCollectionFromStorage() {
-    const initPizzaId = localStorage.getItem('idCollection');
-    if (initPizzaId) {
-      const initPizzaIdArray = initPizzaId.split(',');
-      this.idCollection = this.idCollection.concat(initPizzaIdArray);
-    }
-  }
-
-  savePizzaCollectionToStorage(assortmentItem) {
-    const { pizzaNameSelector, pizzaSelectedTypeSelector, pizzaSelectedSizeSelector } = this.params;
-    const isAdded = this.idCollection?.includes(assortmentItem.id);
-
-    if (isAdded) {
-      const pizzaName = assortmentItem.querySelector(pizzaNameSelector);
-      const pizzaSelectedSize = assortmentItem.querySelector(pizzaSelectedSizeSelector);
-      const pizzaSelectedType = assortmentItem.querySelector(pizzaSelectedTypeSelector);
-      this.addedPizza.push({
-        name: pizzaName.textContent,
-        size: pizzaSelectedSize.textContent,
-        type: pizzaSelectedType.textContent,
-        id: assortmentItem.id,
-      });
-
-      console.log(this.addedPizza);
+    if (this.pizzaCollectionString) {
+      this.pizzaCollection = this.pizzaCollection.concat(this.pizzaCollectionArr);
     }
   }
 }
