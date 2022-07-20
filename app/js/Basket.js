@@ -6,6 +6,8 @@ const defaultParams = {
   sumBasketSelector: '.order__price',
   priceSelector: '.assortment__price',
   pizzaNameSelector: '.assortment__pizza-name',
+  pizzaSizeSelector: '.pizza-information__size-item',
+  pizzaTypeSelector: '.pizza-information__type-item',
   pizzaSelectedTypeSelector: '.pizza-information__type-item_selected',
   pizzaSelectedSizeSelector: '.pizza-information__size-item_selected',
 };
@@ -42,12 +44,6 @@ export default class Basket {
     this.setBasketInfoFromStorage();
     const assortmentItems = document.querySelectorAll(assortmentItemSelector);
     assortmentItems.forEach((assortmentItem) => {
-      const { pizzaNameSelector, pizzaSelectedTypeSelector, pizzaSelectedSizeSelector } = this.params;
-
-      const pizzaName = assortmentItem.querySelector(this.params.pizzaNameSelector);
-      const pizzaSelectedSize = assortmentItem.querySelector(this.params.pizzaSelectedSizeSelector);
-      const pizzaSelectedType = assortmentItem.querySelector(this.params.pizzaSelectedTypeSelector);
-
       const assortmentButton = assortmentItem.querySelector(assortmentButtonSelector);
       this.initBtnsState(assortmentItem, assortmentButton);
 
@@ -55,7 +51,6 @@ export default class Basket {
       this.price = Number(priceElem.id);
 
       assortmentItem.addEventListener('click', ({ target }) => this.clickHandler(target, assortmentButton, assortmentItem));
-      // this.savePizzaCollectionToStorage(assortmentItem);
     });
   }
 
@@ -124,6 +119,12 @@ export default class Basket {
 
   initBtnsState(assortmentItem, assortmentButton) {
     if (!this.pizzaCollectionString) return;
+
+    const { pizzaSizeSelector, pizzaTypeSelector } = this.params;
+
+    const pizzaSizesItems = assortmentItem.querySelectorAll(pizzaSizeSelector);
+    const pizzaTypesItems = assortmentItem.querySelectorAll(pizzaTypeSelector);
+
     const idArray = [];
     const sizeArray = [];
     const typeArray = [];
@@ -131,15 +132,24 @@ export default class Basket {
     this.pizzaCollectionArr.forEach((pizzaItem) => {
       idArray.push(pizzaItem.id);
       sizeArray.push(pizzaItem.size);
+      typeArray.push(pizzaItem.type);
     });
-
-    console.log(sizeArray);
 
     const isAddedId = idArray.includes(assortmentItem.id);
 
     if (isAddedId) {
       assortmentButton.classList.add(this.params.assortmentActiveButtonSelector);
       assortmentButton.innerText = 'Удалить';
+      // ШОТО НЕ РАБОТАЕТ
+      pizzaSizesItems.forEach((pizzaSizeItem) => {
+        pizzaSizeItem.classList.remove('pizza-information__type-item_selected');
+        sizeArray.forEach((item) => {
+          const isSize = pizzaSizeItem.dataset.size === item;
+          if (isSize) {
+            pizzaSizeItem.classList.add('pizza-information__type-item_selected');
+          }
+        });
+      });
     }
   }
 
