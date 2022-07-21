@@ -6,10 +6,10 @@ const defaultParams = {
   sumBasketSelector: '.order__price',
   priceSelector: '.assortment__price',
   pizzaNameSelector: '.assortment__pizza-name',
-  pizzaSizeSelector: '.pizza-information__size-item',
-  pizzaTypeSelector: '.pizza-information__type-item',
-  pizzaSelectedTypeSelector: '.pizza-information__type-item_selected',
-  pizzaSelectedSizeSelector: '.pizza-information__size-item_selected',
+  pizzaSizeSelector: 'pizza-information__size-item',
+  pizzaTypeSelector: 'pizza-information__type-item',
+  pizzaSelectedTypeSelector: 'pizza-information__type-item_selected',
+  pizzaSelectedSizeSelector: 'pizza-information__size-item_selected',
 };
 
 export default class Basket {
@@ -81,8 +81,8 @@ export default class Basket {
     const { pizzaNameSelector, pizzaSelectedTypeSelector, pizzaSelectedSizeSelector } = this.params;
 
     const pizzaName = assortmentItem.querySelector(pizzaNameSelector);
-    const pizzaSelectedSize = assortmentItem.querySelector(pizzaSelectedSizeSelector);
-    const pizzaSelectedType = assortmentItem.querySelector(pizzaSelectedTypeSelector);
+    const pizzaSelectedSize = assortmentItem.querySelector(`.${pizzaSelectedSizeSelector}`);
+    const pizzaSelectedType = assortmentItem.querySelector(`.${pizzaSelectedTypeSelector}`);
 
     this.pizzaCollection.push({
       name: pizzaName.textContent,
@@ -120,10 +120,12 @@ export default class Basket {
   initBtnsState(assortmentItem, assortmentButton) {
     if (!this.pizzaCollectionString) return;
 
-    const { pizzaSizeSelector, pizzaTypeSelector } = this.params;
-
-    const pizzaSizesItems = assortmentItem.querySelectorAll(pizzaSizeSelector);
-    const pizzaTypesItems = assortmentItem.querySelectorAll(pizzaTypeSelector);
+    const {
+      pizzaSizeSelector,
+      pizzaTypeSelector,
+      pizzaSelectedTypeSelector,
+      pizzaSelectedSizeSelector,
+    } = this.params;
 
     const idArray = [];
     const sizeArray = [];
@@ -140,17 +142,38 @@ export default class Basket {
     if (isAddedId) {
       assortmentButton.classList.add(this.params.assortmentActiveButtonSelector);
       assortmentButton.innerText = 'Удалить';
-      // ШОТО НЕ РАБОТАЕТ
-      pizzaSizesItems.forEach((pizzaSizeItem) => {
-        pizzaSizeItem.classList.remove('pizza-information__type-item_selected');
-        sizeArray.forEach((item) => {
-          const isSize = pizzaSizeItem.dataset.size === item;
-          if (isSize) {
-            pizzaSizeItem.classList.add('pizza-information__type-item_selected');
-          }
-        });
-      });
+
+      this.initStateParamsBtns(
+        'size',
+        pizzaSizeSelector,
+        pizzaSelectedSizeSelector,
+        sizeArray,
+        assortmentItem,
+      );
+
+      this.initStateParamsBtns(
+        'type',
+        pizzaTypeSelector,
+        pizzaSelectedTypeSelector,
+        typeArray,
+        assortmentItem,
+      );
     }
+  }
+
+  initStateParamsBtns(dataParam, btnSelector, paramBtnSelectedClass, paramArray, assortmentItem) {
+    const btnsList = assortmentItem.querySelectorAll(`.${btnSelector}`);
+
+    btnsList.forEach((btnItem) => {
+      btnItem.classList.remove(paramBtnSelectedClass);
+      paramArray.forEach((item) => {
+        const isAdded = btnItem.dataset[dataParam] === item;
+
+        if (isAdded) {
+          btnItem.classList.add(paramBtnSelectedClass);
+        }
+      });
+    });
   }
 
   setIdCollectionFromStorage() {
@@ -159,5 +182,3 @@ export default class Basket {
     }
   }
 }
-
-// TODO ноебходимо сохранить размер пиццы и вид теста https://i.imgur.com/DJ7uVl2.png, мб объединить все в одно
