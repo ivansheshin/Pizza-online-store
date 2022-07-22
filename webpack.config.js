@@ -43,9 +43,12 @@ const cssLoaders = (extra) => {
 module.exports = {
   context: path.resolve(__dirname, 'app'),
   mode: 'development',
-  entry: './js/index.js',
+  entry: {
+    assortment: './js/mainPage.js',
+    basket: './js/cartPage.js',
+  },
   output: {
-    filename: filename('js'),
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
@@ -56,7 +59,8 @@ module.exports = {
   resolve: {
     alias: {
       Style: path.resolve(__dirname, 'app/scss'),
-      Script: path.resolve(__dirname, 'app/js'),
+      MainPage: path.resolve(__dirname, 'app/js/mainPage'),
+      CartPage: path.resolve(__dirname, 'app/js/cartPage'),
       Data: path.resolve(__dirname, 'app/data'),
     },
   },
