@@ -45,7 +45,7 @@ module.exports = {
   mode: 'development',
   entry: {
     assortment: './js/mainPage.js',
-    basket: './js/cartPage.js',
+    cart: './js/cartPage.js',
   },
   output: {
     filename: '[name].js',
@@ -71,6 +71,7 @@ module.exports = {
       minify: {
         collapseWhitespace: isProd,
       },
+      chunks: ['assortment'],
     }),
     new HTMLWebpackPlugin({
       template: './cart.html',
@@ -79,6 +80,7 @@ module.exports = {
       minify: {
         collapseWhitespace: isProd,
       },
+      chunks: ['cart'],
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
