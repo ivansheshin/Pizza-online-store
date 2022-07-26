@@ -2,21 +2,21 @@
 /* eslint-disable import/no-unresolved */
 import 'Style/style.scss';
 import assortment from 'Data/assortment.json';
-import RenderGoodsCards from 'Script/RenderGoodsCards';
-import Filter from 'Script/Filters';
-import Sort from 'Script/Sort';
-import SelectParameters from 'Script/SelectParameters';
-import SelectSize from 'Script/SelectSize';
-import Basket from 'Script/Basket';
-import { createPizzaStore } from 'Script/main';
+import Filter from 'MainPage/Filters';
+import Sort from 'MainPage/Sort';
+import SelectParameters from 'MainPage/SelectParameters';
+import SelectSize from 'MainPage/SelectSize';
+// import { createPizzaStore } from 'MainPage/main';
+import Basket from 'MainPage/Basket';
+import RenderGoodsCards from './general/RenderGoodsCards';
 
 document.addEventListener('DOMContentLoaded', () => {
-  createPizzaStore(assortment);
+  // createPizzaStore(assortment);
 
   const assortmentContainer = document.querySelector('.assortment__list');
 
-  const renderGoods = new RenderGoodsCards(assortment, assortmentContainer);
-  renderGoods.render();
+  const renderAssortment = new RenderGoodsCards(assortment, assortmentContainer);
+  renderAssortment.render('assortmentLayout');
 
   const filterCategories = document.querySelectorAll('.filter-categories__item');
   new Filter(assortmentContainer, filterCategories);
