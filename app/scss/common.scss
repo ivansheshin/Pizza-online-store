@@ -1,0 +1,28 @@
+body {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  color: var(--main-text-color);
+  font-family: "Encode Sans SC", sans-serif;
+  background-color: var(--main-bg-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+main {
+  padding: 40px 0;
+}
+
+.container {
+  width: calc(100vw - 100px);
+  max-width: 1400px;
+  margin: 50px auto;
+  background-color: var(--secondary-bg-color);
+  border-radius: 10px;
+}
