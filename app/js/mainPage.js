@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const assortmentContainer = document.querySelector('.assortment__list');
 
   const renderAssortment = new RenderGoodsCards(assortment, assortmentContainer);
-  renderAssortment.render();
+  renderAssortment.render('assortmentLayout');
 
   const filterCategories = document.querySelectorAll('.filter-categories__item');
   new Filter(assortmentContainer, filterCategories);
