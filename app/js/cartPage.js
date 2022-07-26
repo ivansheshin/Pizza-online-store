@@ -1,4 +1,5 @@
 import RenderGoodsCards from './general/RenderGoodsCards';
+import 'Style/cart.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
   const addedPizzaCollectionString = localStorage.getItem('pizzaCollection');
