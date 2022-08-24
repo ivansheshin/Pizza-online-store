@@ -25,7 +25,7 @@ export default class SelectSize {
       const returnPrice = pizzaObject.price[choosenSize];
 
       const pizzaPriceElement = pizzaContainerItem.querySelector('.assortment__price');
-
+      pizzaPriceElement.id = returnPrice;
       pizzaPriceElement.textContent = `от ${returnPrice}`;
     }
   }
