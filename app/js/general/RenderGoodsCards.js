@@ -5,7 +5,9 @@ export default class RenderGoodsCards {
   }
 
   render(method) {
-    if (!this.data) {
+    const isNoData = !this.data?.length || !this.data;
+
+    if (isNoData) {
       this.container?.insertAdjacentHTML('beforeend', RenderGoodsCards[method]());
       return;
     }
