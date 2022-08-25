@@ -2,7 +2,6 @@
 // для перфоманса можно делать preload шрифтов и preconnect к ресурсам гугла, раз шрифт из гугл фонтс
 // плюс нужно посмотреть какие font-weight используются на сайте, а лишнее не подключать
 // вот пример подключения
-// <link rel="preconnect" href="https://fonts.googleapis.com">
 // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 // <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@400;600;800;900&display=swap">
 // <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@400;600;800;900&display=swap">
