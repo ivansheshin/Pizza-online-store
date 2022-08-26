@@ -1,7 +1,11 @@
 .assortment {
   margin: 60px;
+  // с точки зрения БЭМ блоки не должны влиять на окружение
+  // и следовательно например не иметь внешних отступов как margin
+  // так что тут нужно использовать padding
 
   & > h2 {
+    // селекторы по тэгу по максимуму избегаем
     margin-bottom: 35px;
     font-weight: 800;
     font-size: 28px;
@@ -12,10 +16,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 60px;
+    // в макете gap 35px, сильное отличие
   }
 
   &__item {
+    // может быть item логичнее быть элементом блока со списком пицц, а не элементом общей секции блока assortment?
+    // но у тебя пока и list это элемент блока assortment
     margin: 0 auto;
+    // можно выровнять через стили для assortment__list
 
     &_hide {
       display: none;
@@ -23,6 +31,9 @@
   }
 
   &__pizza-name {
+    // визуально не хватает отступа снизу
+    // плюс обрати внимание, что если название будет длинным на несколько строк
+    // то сетка с пиццами будет кривой
     font-size: 20px;
     text-align: center;
   }
@@ -42,22 +53,38 @@
   }
 
   &__btn {
+    // по названию класса непонятно, что за кнопка
     padding: 10px 20px;
     color: var(--color-text-assortment-button);
     font-weight: 700;
     font-size: 16px;
     border: 1px solid var(--color-border-assortment-button);
+    // var(--color-text-assortment-button);
+    // var(--color-border-assortment-button);
+    // отдельные переменные, которые используются в одном месте для одного элемента
+    // вся польза от переменных при этом теряется, раз нет переиспользования
+    // можно просто создать переменную для цвета типа --main-btn-color
+    // и уже ее как-то использовать везде для цвета кнопок
 
     @include button-categories-style(#fff, 130px);
+    // у кнопки получается фиксированная ширина
+    // но в ней может изменяться контент/название,
+    // так что скорее ширина должна быть динамической
   }
 
   &__btn:hover {
     color: var(--color-text-assortment-button-hover);
     background-color: var(--color-bg-assortment-button-hover);
     cursor: pointer;
+    // почему на hover?
     transition: background-color 0.5s, color 0.5s;
+    // если делать transition на hover, то он не сработает когда уберем курсор с элемента
+    // то есть при уводе курса будет резкий переход, а при наведении плавный
+    // поэтому надо всегда transition накидывать на обычный селектор элемента, а не на hover
+    // на hover мы только меняем нужные свойства и все
   }
 // А надо ли оно
+  // не надо вроде
   &__btn_active {
     color: var(--color-text-assortment-button-hover);
     background-color: var(--color-bg-assortment-button-hover);
@@ -66,6 +93,7 @@
 }
 
 .pizza-information {
+  // один файл - один блок, поэтому для .pizza-information нужен отдельный файл
   padding: 6px;
   font-weight: 700;
   font-size: 14px;
@@ -85,11 +113,15 @@
 
   &__type-item:hover {
     cursor: pointer;
+    // тоже почему-то именно при hover добавляется
   }
 
   &__type-item_selected {
     background-color: var(--color-bg-pizza-info-item-selected);
     transition: background-color 0.5s;
+    // по аналогии с transition & hover выше - плавно будет только при добавлении этого класса
+    // а если этот класс убирается с этого элемента, то переход будет резким
+    // так что лучше transition тоже накинуть на обычный селектор &__type-item
   }
 
   &__size {
@@ -103,9 +135,11 @@
   &__size-item_selected {
     background-color: var(--color-bg-pizza-info-item-selected);
     transition: background-color 0.5s;
+    // аналогично про transition
   }
 
   &__size-item:hover {
     cursor: pointer;
+    // аналогично про hover
   }
 }
