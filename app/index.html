@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- lang = en, а контент на русском, тоже можно исправить-->
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,9 +16,13 @@
 <body>
   <div class="container">
     <div class="header">
+      <!-- будет лучше, если класс header соответственно будет у тэга header  -->
+      <!-- тут этот div скорее всего ненужная обертка и можно просто его убрать  -->
       <header>
         <section class="logo-name-block">
-          <?xml version="1.0" ?><svg class="logo-name-block__logo" aria-label="pizza-logo" viewBox="0 0 64 64"
+          <?xml version="1.0" ?>
+          <!-- какой-то лишний тэг -->
+          <svg class="logo-name-block__logo" aria-label="pizza-logo" viewBox="0 0 64 64"
             width='38px' xmlns="http://www.w3.org/2000/svg">
             <defs>
               <style>
@@ -96,7 +100,8 @@
         </section>
 
         <section class="order">
-          <a class="order__link" href="cart.html" aria-label="Link to order" tabindex="2">
+          <a class="order__link" href="cart.html" aria-label="Link to order">
+            <!-- нет необходимости указывать tabindex, ссылка в принципе и так как второй элемент -->
             <span class="order__price" aria-label="Price of the order">0</span>
             <div class="order__quantity">
               <svg class="order__trolley" width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -117,12 +122,15 @@
               <span aria-label="Number of a pizza">0</span>
             </div>
           </a>
+        <!-- плюсик за то что запарился с aria label -->
         </section>
 
       </header>
     </div>
     <main>
       <section class="pizza-types-and-sort">
+        <!-- pizza-categories-and-sort? -->
+        <!-- filter-and-sort? -->
         <ul class="filter-categories">
           <li class="filter-categories__item filter-categories__item_active" tabindex="3" id='btn-filter-choose-all'>Все
           </li>
@@ -131,6 +139,10 @@
           <li class="filter-categories__item" tabindex="6">Гриль</li>
           <li class="filter-categories__item" tabindex="7">Острые</li>
           <li class="filter-categories__item" tabindex="8">Закрытые</li>
+          <!-- наверное по смыслу это все кнопки? -->
+          <!-- пока это обычные li, то даже нет смысла tabindex указывать, потому что с клавиатуры они недоступны для нажатия -->
+          <!-- поэтому надо делать это кнопками, чтобы поддерживалась нормальная доступность -->
+          <!-- и если это будут кнопки, то не придется указывать tabindex -->
         </ul>
 
         <div class="sort-wrap">
@@ -147,6 +159,7 @@
               <li class="sort__item" id="popularity">Популярности</li>
               <li class="sort__item" id="name">Названию</li>
               <li class="sort__item" id="price">Цене</li>
+              <!-- тут тоже надо сделать кнопки -->
             </ul>
           </section>
         </div>
@@ -158,6 +171,7 @@
       </section>
     </main>
     <footer></footer>
+    <!-- футер видимо можно убрать   -->
   </div>
 </body>
 
