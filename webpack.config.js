@@ -63,6 +63,7 @@ module.exports = {
   plugins: [
     new HTMLWebpackPlugin({
       template: './index.html',
+      filename: 'index.html',
       inject: 'body',
       minify: {
         collapseWhitespace: isProd,

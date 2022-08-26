@@ -1,9 +1,10 @@
-@import "Design/mixins";
-@import "Design/variables";
-@import "BEM/assortment";
-@import "BEM/cart-main";
-@import "BEM/header";
-@import "BEM/filtersandsorting";
+@import "common/mixins";
+@import "common/variables";
+@import "blocks/assortment";
+@import "blocks/cart-main";
+@import "blocks/header";
+@import "blocks/filtersandsorting";
+@import "./common-styles";
 
 // я так понимаю это файл с общими стилями, но тут подключаются стили для конкретных страницы
 // то есть на выходе получается один файл css, в котором будут стили для всех страниц
@@ -29,59 +30,5 @@
 // styles подключается везде
 // файлы из blocks импортируются в отдельные файлы pages
 // файлы pages импортируются на конкретные страницы
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
-* {
-  margin: 0;
-}
-
-body {
-  margin: 0 auto;
-  padding: 0;
-  color: var(--main-text-color);
-  font-family: "Encode Sans SC", Roboto, sans-serif;
-  background-color: var(--main-bg-color);
-}
-
-a {
-  text-decoration: none;
-}
-
-ul {
-  list-style: none;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
-.container {
-  width: calc(100vw - 100px);
-  max-width: 1400px;
-  margin: 50px auto;
-  padding: 40px 0;
-  background-color: var(--secondary-bg-color);
-  border-radius: 10px;
-}
+// TODO Разделить для отдельных страниц после мержа корзины
