@@ -1,36 +1,34 @@
-@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@400;600;800;900&display=swap");
-@import "Design/mixins";
-@import "Design/variables";
-@import "BEM/assortment";
-@import "BEM/cart-main";
-@import "BEM/header";
-@import "BEM/filtersandsorting";
+@import "common/mixins";
+@import "common/variables";
+@import "blocks/assortment";
+@import "blocks/cart-main";
+@import "blocks/header";
+@import "blocks/filtersandsorting";
+@import "./common-styles";
 
-body {
-  box-sizing: border-box;
-  margin: 0 auto;
-  padding: 0;
-  color: var(--main-text-color);
-  font-family: "Encode Sans SC", sans-serif;
-  background-color: var(--main-bg-color);
-}
+// я так понимаю это файл с общими стилями, но тут подключаются стили для конкретных страницы
+// то есть на выходе получается один файл css, в котором будут стили для всех страниц
+// что выльется в проблемы при разрастании проекта
+// поэтому лучше будет сделать один файл с общими стилями и подключать его везде
+// а уникальные стили для каждой страницы подключать на эти страницы в отдельных файлах
 
-a {
-  text-decoration: none;
-}
+// значит можно сделать структуру стилей в таком виде
+// scss
+// - common
+// - - mixins.scss
+// - - variables.scss
+// - blocks
+// - - assortment.scss
+// - - header.scss
+// - - ....scss
+// - pages
+// - - home.scss
+// - - cart.scss
+// styles.scss
 
-ul {
-  list-style: none;
-}
+// common импортируются в styles.scss
+// styles подключается везде
+// файлы из blocks импортируются в отдельные файлы pages
+// файлы pages импортируются на конкретные страницы
 
-main {
-  padding: 40px 0;
-}
-
-.container {
-  width: calc(100vw - 100px);
-  max-width: 1400px;
-  margin: 50px auto;
-  background-color: var(--secondary-bg-color);
-  border-radius: 10px;
-}
+// TODO Разделить для отдельных страниц после мержа корзины
