@@ -88,14 +88,13 @@
             </g>
           </svg>
           <div class="logo-name-block__text">
-            <h1><a tabindex="1" class="logo-name-block__link" href="#">Pizza online store</a></h1>
+            <h1><a class="logo-name-block__link" href="#">Pizza online store</a></h1>
             <p>Лучшая пицца в твоем городе</p>
           </div>
         </section>
 
         <section class="order">
           <a class="order__link" href="cart.html" aria-label="Link to order">
-            <!-- нет необходимости указывать tabindex, ссылка в принципе и так как второй элемент -->
             <span class="order__price" aria-label="Price of the order">0</span>
             <div class="order__quantity">
               <svg class="order__trolley" width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -116,14 +115,11 @@
               <span aria-label="Number of a pizza">0</span>
             </div>
           </a>
-        <!-- плюсик за то что запарился с aria label -->
         </section>
 
       </header>
     <main>
-      <section class="pizza-types-and-sort">
-        <!-- pizza-categories-and-sort? -->
-        <!-- filter-and-sort? -->
+      <section class="pizza-categories-and-sort">
         <ul class="filter-categories">
           <li class="filter-categories__item filter-categories__item_active" id='btn-filter-choose-all'>
             <button>Все</button>
