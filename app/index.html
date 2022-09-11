@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<!-- lang = en, а контент на русском, тоже можно исправить-->
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,13 +14,8 @@
 
 <body>
   <div class="container">
-    <div class="header">
-      <!-- будет лучше, если класс header соответственно будет у тэга header  -->
-      <!-- тут этот div скорее всего ненужная обертка и можно просто его убрать  -->
-      <header>
+      <header class="header">
         <section class="logo-name-block">
-          <?xml version="1.0" ?>
-          <!-- какой-то лишний тэг -->
           <svg class="logo-name-block__logo" aria-label="pizza-logo" viewBox="0 0 64 64"
             width='38px' xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -126,23 +120,19 @@
         </section>
 
       </header>
-    </div>
     <main>
       <section class="pizza-types-and-sort">
         <!-- pizza-categories-and-sort? -->
         <!-- filter-and-sort? -->
         <ul class="filter-categories">
-          <li class="filter-categories__item filter-categories__item_active" tabindex="3" id='btn-filter-choose-all'>Все
+          <li class="filter-categories__item filter-categories__item_active" id='btn-filter-choose-all'>
+            <button>Все</button>
           </li>
-          <li class="filter-categories__item" tabindex="4">Мясные</li>
-          <li class="filter-categories__item" tabindex="5">Вегетарианская</li>
-          <li class="filter-categories__item" tabindex="6">Гриль</li>
-          <li class="filter-categories__item" tabindex="7">Острые</li>
-          <li class="filter-categories__item" tabindex="8">Закрытые</li>
-          <!-- наверное по смыслу это все кнопки? -->
-          <!-- пока это обычные li, то даже нет смысла tabindex указывать, потому что с клавиатуры они недоступны для нажатия -->
-          <!-- поэтому надо делать это кнопками, чтобы поддерживалась нормальная доступность -->
-          <!-- и если это будут кнопки, то не придется указывать tabindex -->
+          <li class="filter-categories__item"><button>Мясные</button></li>
+          <li class="filter-categories__item"><button>Вегетарианская</button></li>
+          <li class="filter-categories__item"><button>Гриль</button></li>
+          <li class="filter-categories__item"><button>Острые</button></li>
+          <li class="filter-categories__item"><button>Закрытые</button></li>
         </ul>
 
         <div class="sort-wrap">
@@ -156,10 +146,9 @@
             <span class="sort__title">Сортировка по:</span>
             <button class="sort__button" id="btn-popularity">Популярности</button>
             <ul class="sort__list">
-              <li class="sort__item" id="popularity">Популярности</li>
-              <li class="sort__item" id="name">Названию</li>
-              <li class="sort__item" id="price">Цене</li>
-              <!-- тут тоже надо сделать кнопки -->
+              <li class="sort__item" id="popularity"><button>Популярности</button></li>
+              <li class="sort__item" id="name"><button>Закрытые</button></li>
+              <li class="sort__item" id="price"><button>Цене</button></li>
             </ul>
           </section>
         </div>
@@ -170,8 +159,6 @@
         </div>
       </section>
     </main>
-    <footer></footer>
-    <!-- футер видимо можно убрать   -->
   </div>
 </body>
 
