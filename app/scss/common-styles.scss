@@ -46,6 +46,14 @@ h6 {
   overflow-wrap: break-word;
 }
 
+button {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+}
+
 .container {
   width: calc(100vw - 100px);
   max-width: 1400px;
